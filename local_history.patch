@@ -1,0 +1,18 @@
+Index: src/main/resources/templates/house/add.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/resources/templates/house/add.html	(date 1527845488918)
++++ src/main/resources/templates/house/add.html	(date 1527845488918)
+@@ -163,8 +163,8 @@
+                 <td>楼盘户型图片:</td>
+                 <td>
+                     <!-- 最多是上传三张图片-->
+-                    <a href="javascript:void(0)" class="easyui-linkbutton hdHouseTypePicFileUpload"
+-                       id="hdHouseTypePicFileUpload">上传楼盘展示图片</a>
++                    <a href="javascript:void(0)" class="easyui-linkbutton "
++                       id="">上传楼盘展示图片</a>
+                     <!-- 上传到后台的数据 -->
+                     <input type="hidden" name="hdHouseTypePic"/>
+                 </td>

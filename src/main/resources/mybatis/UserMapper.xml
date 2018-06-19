@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rongshu.houseweb.mapper.UserMapper">
+
+    <!--根据用户名和密码查询数据  -->
+    <select id="findUserByUserNameAndPassword" resultType="com.rongshu.houseweb.entity.User">
+		SELECT * FROM house_user WHERE username= #{userName} AND password = #{password}
+	</select>
+
+</mapper>

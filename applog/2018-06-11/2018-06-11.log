@@ -1,0 +1,131 @@
+2018-06-11 21:26:04 -Starting HousewebApplication on LAPTOP-NDT5HQ53 with PID 42240 (D:\workspace\HouseWeb\target\classes started by m1304 in D:\workspace\HouseWeb)
+2018-06-11 21:26:04 -Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2018-06-11 21:26:04 -No active profile set, falling back to default profiles: default
+2018-06-11 21:26:04 -HV000001: Hibernate Validator 5.3.6.Final
+2018-06-11 21:26:04 -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@49e78ff0: startup date [Mon Jun 11 21:26:04 CST 2018]; root of context hierarchy
+2018-06-11 21:26:06 -Tomcat initialized with port(s): 8082 (http)
+2018-06-11 21:26:06 -Starting service [Tomcat]
+2018-06-11 21:26:06 -Starting Servlet Engine: Apache Tomcat/8.5.23
+2018-06-11 21:26:06 -Initializing Spring embedded WebApplicationContext
+2018-06-11 21:26:06 -Root WebApplicationContext: initialization completed in 1863 ms
+2018-06-11 21:26:06 -Mapping servlet: 'dispatcherServlet' to [/]
+2018-06-11 21:26:06 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-11 21:26:07 ->>>>>>>>>>>>>>>>>>>>>>Druid DataSource init>>>>>>>>>>>
+2018-06-11 21:26:07 -Mapped "{[/house/add],methods=[GET]}" onto public java.lang.String com.rongshu.houseweb.controller.HouseController.add()
+2018-06-11 21:26:07 -Mapped "{[/house/list],methods=[GET]}" onto public java.lang.String com.rongshu.houseweb.controller.HouseController.list()
+2018-06-11 21:26:07 -Mapped "{[/house/save],methods=[POST]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.save(com.rongshu.houseweb.entity.HouseInfo)
+2018-06-11 21:26:07 -Mapped "{[/house/query],methods=[GET]}" onto public com.rongshu.houseweb.vo.EasyUIResult com.rongshu.houseweb.controller.HouseController.query(java.lang.Integer,java.lang.Integer)
+2018-06-11 21:26:07 -Mapped "{[/house/findAll],methods=[GET]}" onto public com.rongshu.houseweb.vo.EasyUIResult com.rongshu.houseweb.controller.HouseController.findAll()
+2018-06-11 21:26:07 -Mapped "{[/house/reshelf],methods=[POST]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.reshelf(java.lang.Long[])
+2018-06-11 21:26:07 -Mapped "{[/house/queryById],methods=[GET]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.queryById(java.lang.Long)
+2018-06-11 21:26:07 -Mapped "{[/house/edit],methods=[GET]}" onto public java.lang.String com.rongshu.houseweb.controller.HouseController.edit(java.lang.Long)
+2018-06-11 21:26:07 -Mapped "{[/house/instock],methods=[POST]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.instock(java.lang.Long[])
+2018-06-11 21:26:07 -Mapped "{[/house/delete]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.deleteHouse(java.lang.Long[])
+2018-06-11 21:26:07 -Mapped "{[/house/update]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.updateHouse(com.rongshu.houseweb.entity.HouseInfo)
+2018-06-11 21:26:07 -Mapped "{[/index/home],methods=[GET]}" onto public java.lang.String com.rongshu.houseweb.controller.IndexController.home()
+2018-06-11 21:26:07 -Mapped "{[/pic/upload]}" onto public com.rongshu.houseweb.vo.PicUploadResult com.rongshu.houseweb.controller.PicUploadController.picUpload(org.springframework.web.multipart.MultipartFile)
+2018-06-11 21:26:07 -Mapped "{[/user/login],methods=[GET]}" onto public java.lang.String com.rongshu.houseweb.controller.UserController.login()
+2018-06-11 21:26:07 -Mapped "{[/user/doLogin],methods=[POST]}" onto public java.lang.String com.rongshu.houseweb.controller.UserController.doLogin(java.lang.String,java.lang.String,org.springframework.ui.Model,org.apache.catalina.servlet4preview.http.HttpServletRequest)
+2018-06-11 21:26:07 -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-11 21:26:07 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-11 21:26:07 -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-11 21:26:07 -Mapped URL path [/templates/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-11 21:26:07 -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@49e78ff0: startup date [Mon Jun 11 21:26:04 CST 2018]; root of context hierarchy
+2018-06-11 21:26:08 -LiveReload server is running on port 35729
+2018-06-11 21:26:08 -Registering beans for JMX exposure on startup
+2018-06-11 21:26:08 -Bean with name 'druidDataSource' has been autodetected for JMX exposure
+2018-06-11 21:26:08 -Located MBean 'druidDataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=druidDataSource,type=DruidDataSource]
+2018-06-11 21:26:08 -Initializing ProtocolHandler ["http-nio-8082"]
+2018-06-11 21:26:08 -Starting ProtocolHandler ["http-nio-8082"]
+2018-06-11 21:26:08 -Using a shared selector for servlet write/read
+2018-06-11 21:26:08 -Tomcat started on port(s): 8082 (http)
+2018-06-11 21:26:08 -Started HousewebApplication in 4.598 seconds (JVM running for 7.743)
+2018-06-11 21:29:23 -A cookie header was received [1528207866; Hm_lvt_92658b22bc643eda74d393a8cac0734c=1528165095,1528207868; Hm_lvt_af1ee59024e705abd77fe462544143b7=1528165096,1528207869] that contained an invalid cookie. That cookie will be ignored.Note: further occurrences of this error will be logged at DEBUG level.
+2018-06-11 21:29:23 -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-11 21:29:23 -FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-11 21:29:23 -FrameworkServlet 'dispatcherServlet': initialization completed in 45 ms
+2018-06-11 21:29:24 -[THYMELEAF] INITIALIZING TEMPLATE ENGINE
+2018-06-11 21:29:24 -[THYMELEAF] INITIALIZING TEMPLATE RESOLVER: org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver
+2018-06-11 21:29:24 -[THYMELEAF] TEMPLATE RESOLVER INITIALIZED OK
+2018-06-11 21:29:24 -[THYMELEAF] INITIALIZING MESSAGE RESOLVER: org.thymeleaf.spring4.messageresolver.SpringMessageResolver
+2018-06-11 21:29:24 -[THYMELEAF] MESSAGE RESOLVER INITIALIZED OK
+2018-06-11 21:29:24 -[THYMELEAF] TEMPLATE ENGINE CONFIGURATION:
+[THYMELEAF] * Cache Factory implementation: org.thymeleaf.cache.StandardCacheManager
+[THYMELEAF] * Template modes:
+[THYMELEAF]     * VALIDXML
+[THYMELEAF]     * VALIDXHTML
+[THYMELEAF]     * LEGACYHTML5
+[THYMELEAF]     * XML
+[THYMELEAF]     * HTML5
+[THYMELEAF]     * XHTML
+[THYMELEAF] * Template resolvers (in order):
+[THYMELEAF]     * org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver
+[THYMELEAF] * Message resolvers (in order):
+[THYMELEAF]     * org.thymeleaf.spring4.messageresolver.SpringMessageResolver
+[THYMELEAF] * Dialect [1 of 2]: org.thymeleaf.spring4.dialect.SpringStandardDialect
+[THYMELEAF]     * Prefix: "th"
+[THYMELEAF] * Dialect [2 of 2]: nz.net.ultraq.thymeleaf.LayoutDialect
+[THYMELEAF]     * Prefix: "layout"
+[THYMELEAF] TEMPLATE ENGINE CONFIGURED OK
+2018-06-11 21:29:24 -[THYMELEAF] TEMPLATE ENGINE INITIALIZED
+2018-06-11 21:29:24 -No mapping found for HTTP request with URI [/favicon.ico] in DispatcherServlet with name 'dispatcherServlet'
+2018-06-11 21:29:33 -{dataSource-1} inited
+2018-06-11 21:29:34 -==>  Preparing: SELECT * FROM house_info WHERE hi_status = 1 
+2018-06-11 21:29:34 -==> Parameters: 
+2018-06-11 21:29:34 -<==      Total: 2
+2018-06-11 21:29:42 -==>  Preparing: select ID, hi_name, hi_avg_price, hi_attache, hi_afforestation, hi_decorate, hi_park_place, hi_plot_ratio, hi_category, hi_year, hi_management_fee, hi_construction_ratio, hi_type, hi_acreage, hi_delivery_time, hi_developer, hi_show_pic, hi_superiority_pic, hi_superiority_desc, hi_house_type_pic, hi_peripheral_matching_pic, hi_peripheral_matching_desc, hi_reminder_content, hi_hot_line, hi_status, hi_update_date, hi_create_date from house_info where ID = ? 
+2018-06-11 21:29:42 -==> Parameters: 1(Long)
+2018-06-11 21:29:42 -<==      Total: 1
+2018-06-11 21:38:50 -Starting HousewebApplication on LAPTOP-NDT5HQ53 with PID 15388 (D:\workspace\HouseWeb\target\classes started by m1304 in D:\workspace\HouseWeb)
+2018-06-11 21:38:50 -Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2018-06-11 21:38:50 -No active profile set, falling back to default profiles: default
+2018-06-11 21:38:50 -HV000001: Hibernate Validator 5.3.6.Final
+2018-06-11 21:38:50 -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6cd2ff64: startup date [Mon Jun 11 21:38:50 CST 2018]; root of context hierarchy
+2018-06-11 21:38:53 -Tomcat initialized with port(s): 8082 (http)
+2018-06-11 21:38:53 -Starting service [Tomcat]
+2018-06-11 21:38:53 -Starting Servlet Engine: Apache Tomcat/8.5.23
+2018-06-11 21:38:53 -Initializing Spring embedded WebApplicationContext
+2018-06-11 21:38:53 -Root WebApplicationContext: initialization completed in 3017 ms
+2018-06-11 21:38:53 -Mapping servlet: 'dispatcherServlet' to [/]
+2018-06-11 21:38:53 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-11 21:38:53 ->>>>>>>>>>>>>>>>>>>>>>Druid DataSource init>>>>>>>>>>>
+2018-06-11 21:38:54 -Mapped "{[/house/add],methods=[GET]}" onto public java.lang.String com.rongshu.houseweb.controller.HouseController.add()
+2018-06-11 21:38:54 -Mapped "{[/house/list],methods=[GET]}" onto public java.lang.String com.rongshu.houseweb.controller.HouseController.list()
+2018-06-11 21:38:54 -Mapped "{[/house/save],methods=[POST]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.save(com.rongshu.houseweb.entity.HouseInfo)
+2018-06-11 21:38:54 -Mapped "{[/house/query],methods=[GET]}" onto public com.rongshu.houseweb.vo.EasyUIResult com.rongshu.houseweb.controller.HouseController.query(java.lang.Integer,java.lang.Integer)
+2018-06-11 21:38:54 -Mapped "{[/house/findAll],methods=[GET]}" onto public com.rongshu.houseweb.vo.EasyUIResult com.rongshu.houseweb.controller.HouseController.findAll()
+2018-06-11 21:38:54 -Mapped "{[/house/edit],methods=[GET]}" onto public java.lang.String com.rongshu.houseweb.controller.HouseController.edit(java.lang.Long)
+2018-06-11 21:38:54 -Mapped "{[/house/update]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.updateHouse(com.rongshu.houseweb.entity.HouseInfo)
+2018-06-11 21:38:54 -Mapped "{[/house/reshelf],methods=[POST]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.reshelf(java.lang.Long[])
+2018-06-11 21:38:54 -Mapped "{[/house/queryById],methods=[GET]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.queryById(java.lang.Long)
+2018-06-11 21:38:54 -Mapped "{[/house/instock],methods=[POST]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.instock(java.lang.Long[])
+2018-06-11 21:38:54 -Mapped "{[/house/delete]}" onto public com.rongshu.houseweb.vo.SysResult com.rongshu.houseweb.controller.HouseController.deleteHouse(java.lang.Long[])
+2018-06-11 21:38:54 -Mapped "{[/index/home],methods=[GET]}" onto public java.lang.String com.rongshu.houseweb.controller.IndexController.home()
+2018-06-11 21:38:54 -Mapped "{[/pic/upload]}" onto public com.rongshu.houseweb.vo.PicUploadResult com.rongshu.houseweb.controller.PicUploadController.picUpload(org.springframework.web.multipart.MultipartFile)
+2018-06-11 21:38:54 -Mapped "{[/user/doLogin],methods=[POST]}" onto public java.lang.String com.rongshu.houseweb.controller.UserController.doLogin(java.lang.String,java.lang.String,org.springframework.ui.Model,org.apache.catalina.servlet4preview.http.HttpServletRequest)
+2018-06-11 21:38:54 -Mapped "{[/user/login],methods=[GET]}" onto public java.lang.String com.rongshu.houseweb.controller.UserController.login()
+2018-06-11 21:38:54 -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-11 21:38:54 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-11 21:38:54 -Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-11 21:38:54 -Mapped URL path [/templates/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-11 21:38:54 -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6cd2ff64: startup date [Mon Jun 11 21:38:50 CST 2018]; root of context hierarchy
+2018-06-11 21:38:56 -LiveReload server is running on port 35729
+2018-06-11 21:38:56 -Registering beans for JMX exposure on startup
+2018-06-11 21:38:56 -Bean with name 'druidDataSource' has been autodetected for JMX exposure
+2018-06-11 21:38:56 -Located MBean 'druidDataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=druidDataSource,type=DruidDataSource]
+2018-06-11 21:38:56 -Initializing ProtocolHandler ["http-nio-8082"]
+2018-06-11 21:38:56 -Starting ProtocolHandler ["http-nio-8082"]
+2018-06-11 21:38:56 -Using a shared selector for servlet write/read
+2018-06-11 21:38:56 -Tomcat started on port(s): 8082 (http)
+2018-06-11 21:38:56 -Started HousewebApplication in 7.008 seconds (JVM running for 8.577)
+2018-06-11 21:39:01 -A cookie header was received [1528207866; Hm_lvt_92658b22bc643eda74d393a8cac0734c=1528165095,1528207868; Hm_lvt_af1ee59024e705abd77fe462544143b7=1528165096,1528207869] that contained an invalid cookie. That cookie will be ignored.Note: further occurrences of this error will be logged at DEBUG level.
+2018-06-11 21:39:01 -Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-11 21:39:01 -FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-11 21:39:01 -FrameworkServlet 'dispatcherServlet': initialization completed in 26 ms
+2018-06-11 21:39:01 -{dataSource-1} inited
+2018-06-11 21:39:01 -==>  Preparing: select ID, hi_name, hi_avg_price, hi_attache, hi_afforestation, hi_decorate, hi_park_place, hi_plot_ratio, hi_category, hi_year, hi_management_fee, hi_construction_ratio, hi_type, hi_acreage, hi_delivery_time, hi_developer, hi_show_pic, hi_superiority_pic, hi_superiority_desc, hi_house_type_pic, hi_peripheral_matching_pic, hi_peripheral_matching_desc, hi_reminder_content, hi_hot_line, hi_status, hi_update_date, hi_create_date from house_info where ID = ? 
+2018-06-11 21:39:02 -==> Parameters: 1(Long)
+2018-06-11 21:39:02 -<==      Total: 1
+2018-06-11 21:39:56 -==>  Preparing: select ID, hi_name, hi_avg_price, hi_attache, hi_afforestation, hi_decorate, hi_park_place, hi_plot_ratio, hi_category, hi_year, hi_management_fee, hi_construction_ratio, hi_type, hi_acreage, hi_delivery_time, hi_developer, hi_show_pic, hi_superiority_pic, hi_superiority_desc, hi_house_type_pic, hi_peripheral_matching_pic, hi_peripheral_matching_desc, hi_reminder_content, hi_hot_line, hi_status, hi_update_date, hi_create_date from house_info where ID = ? 
+2018-06-11 21:39:56 -==> Parameters: 1(Long)
+2018-06-11 21:39:56 -<==      Total: 1

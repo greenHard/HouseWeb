@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;" charset="utf-8"/>
+    <title>后台管理系统</title>
+    <link href="/static/skin/default/css/login.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/static/js/common.js"></script>
+</head>
+
+<body>
+<form id="login_main" method="post" action="/user/doLogin">
+    <div id="warpbox">
+        <div class="main">
+            <div class="zck">
+                <div class="zc">
+                    <div class="zc_line">用户名：
+                        <input type="text" value="" name="userName" id="userName"
+                               onkeyup="showGs(event)"
+                               onFocus="this.select();"
+                               autocomplete="off" title="请您输入用户名"/>
+                        <div id="ts" style="z-index:1;"></div>
+                    </div>
+                    <div class="zc_line">密　码：
+                        <input type="password" value="" name="password" id="password"
+                               onfocus="$('#ts').css('display','none');this.select();"
+                               onKeyDown="javascript:if(event.keyCode==13){ submitFind(); }"
+                               title="请您输入密码"/></div>
+                </div>
+                <div class="dl">
+                    <input class="dl_img" value="" type="button" onclick="formSubmit();"
+                           onmouseover="this.style.background='url(/static/skin/default/images/login/dl_h.jpg) no-repeat'"
+                           onmouseout="this.style.background='url(/static/skin/default/images/login/dl_a.jpg) no-repeat'"
+                    />
+                    <input class="reset_img" value="" type="button"
+                           onmouseover="this.style.background='url(/static/skin/default/images/login/reset_h.jpg) no-repeat'"
+                           onmouseout="this.style.background='url(/static/skin/default/images/login/reset_a.jpg) no-repeat'"
+                    />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/JavaScript">
+    document.getElementById('login_main').userName.focus();
+</script>
+
+</body>
+</html>
+
+

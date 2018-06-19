@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+</head>
+<body>
+<div style="padding:10px 10px 10px 10px">
+    <form id="houseEditForm" class="houseForm" method="post">
+        <input type="hidden" name="id"/>
+        <table cellpadding="5">
+            <tr>
+                <td>楼盘名称:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiName" data-options="required:true"
+                           style="width: 150px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘均价:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiAvgPrice" data-options="required:true"
+                           style="width: 150px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘联排:</td>
+                <td>
+                    <input class="easyui-numberbox" type="text" th:name="hiAttache"
+                           data-options="min:1,max:99999999,precision:2,required:true" style="width: 100px"/>&nbsp;&nbsp;平方米
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘绿化:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiAfforestation" data-options="required:true"
+                           style="width: 80px;"/>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>楼盘装修:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiDecorate" data-options="required:true"
+                           style="width: 80px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘位置:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiAddress" data-options="required:true"
+                           style="width: 80px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘车位:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiParkPlace" data-options="required:true"
+                           style="width: 80px;"/>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>楼盘容积率:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiPlotRatio" data-options="required:true"
+                           style="width: 100px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘物业类别:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiCategory" data-options="required:true"
+                           style="width: 100px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘产权年限:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiYear" data-options="required:true"
+                           style="width: 100px;"/>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>楼盘物业费:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiManagementFee" data-options="required:true"
+                           style="width: 280px;"/>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>楼盘得房率:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiConstructionRatio" data-options="required:true"
+                           style="width: 280px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘建筑类型:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiType" data-options="required:true"
+                           style="width: 280px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘建筑面积:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiAcreage" data-options="required:true"
+                           style="width: 280px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘交房时间:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiDeliveryTime" data-options="required:true"
+                           style="width: 280px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘开发商:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiDeveloper" data-options="required:true"
+                           style="width: 280px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘LOGO:</td>
+                <td>
+                    <!-- 只能上传一张图片-->
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiLogoFileUpload" id="hiLogoFileUpload">楼盘LOGO</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiLogo"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘展示图片:</td>
+                <td>
+                    <!-- 只能上传一张图片-->
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiShowPicFileUpload" id="hiShowPicFileUpload">上传楼盘展示图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiShowPic"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘优势图片:</td>
+                <td>
+                    <!-- 只能上传一张图片-->
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiSuperiorityPicFileUpload"
+                       id="hiSuperiorityPicFileUpload">上传楼盘优势图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiSuperiorityPic"/>
+                </td>
+            </tr>
+            <tr>
+                <td>楼盘优势描述:</td>
+                <td>
+                    <textarea th:name="hiSuperiorityDesc" cols="60" rows="5" warp="virtual" maxlength="200"
+                              class="easyui-validatebox" required="true"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘户型图片:</td>
+                <td>
+                    <!-- 最多是上传三张图片-->
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiHouseTypePicFileUpload"
+                       id="hiHouseTypePicFileUpload">上传楼盘户型图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiHouseTypePic"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘周边图片:</td>
+                <td>
+                    <!-- 最多是上传三张图片-->
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiPeripheralMatchingPicFileUpload"
+                       id="hiPeripheralMatchingPicFileUpload">上传楼盘周边图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiPeripheralMatchingPic"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘周边图片描述:</td>
+                <td>
+                    <textarea th:name="hiPeripheralMatchingDesc" cols="60" rows="5" warp="virtual" maxlength="200"
+                              class="easyui-validatebox" required="true"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘温馨提示:</td>
+                <td>
+                    <textarea th:name="hiReminderContent" cols="60" rows="5" warp="virtual" maxlength="200"
+                              class="easyui-validatebox" required="true"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>楼盘热线:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiHotLine" data-options="required:true"
+                           style="width: 150px;"/>
+                </td>
+            </tr>
+        </table>
+        <input type="hidden" name="id"/>
+    </form>
+    <div style="padding:5px">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var itemEditEditor ;
+    $(function(){
+        //实例化编辑器
+        itemEditEditor = KindEditorUtil.createEditor("#houseEditForm [name=desc]");
+    });
+
+    // var KE;
+    // KindEditor.ready(function(K) {
+    //     KE = K.create('#content',{
+    //         imageSizeLimit : '10MB', //批量上传图片单张最大容量
+    //         imageUploadLimit : 100 //批量上传图片同时上传最多个数
+    //     });
+    // });
+
+    function submitForm() {
+        if (!$('#houseEditForm').form('validate')) {
+            $.messager.alert('提示', '表单还未填写完成!');
+            return;
+        }
+
+        // houseEditEditor.sync();
+
+        $.post("/house/update", $("#houseEditForm").serialize(), function (data) {
+            if (data.status == 200) {
+                $.messager.alert('提示', '修改商品成功!', 'info', function () {
+                    $("#houseEditWindow").window('close');
+                    $("#houseList").datagrid("reload");
+                });
+            } else {
+                $.messager.alert('提示', '修改商品失败!');
+            }
+        });
+    }
+</script>
+</body>
+</html>
