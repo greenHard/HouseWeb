@@ -99,7 +99,7 @@ img,video {max-width:100%;}
 .justify,.room__content {text-align:justify;}
 .justify:after,.room__content:after {display:inline-block;overflow:hidden;width:100%;height:0;content:"";}
 .color--primary {color:#e6daaa;}
-.swiper_banner {padding-bottom:37px;background-image:url("../images/banner-bar.jpg");background-repeat:repeat-x;background-position:left bottom;}
+.swiper_banner {padding-bottom:37px;background-image:url("../img/banner-bar.jpg");background-repeat:repeat-x;background-position:left bottom;}
 .swiper_banner__pic {position:relative;background-position:center;background-size:cover;}
 .swiper_banner__pic:before {display:block;padding-top:52.36%;content:'';}
 .mod_index {margin:20px 0;}

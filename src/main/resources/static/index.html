@@ -169,7 +169,6 @@
 <script>
     (function ($, vue) {
         $('body').ready(function () {
-
             new Vue({
                 el: '#vue-mont',
                 data: {
@@ -178,7 +177,7 @@
                 created: function () {
                     var self = this;
                     $.ajax({
-                        url: 'http://47.94.200.45/house/findAll',
+                        url: 'http://www.dexudichan.com/house/findAll',
                         dataType: 'json',
                         data: {
                             pageSize: 50,

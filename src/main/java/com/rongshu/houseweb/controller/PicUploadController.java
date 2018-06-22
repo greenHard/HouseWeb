@@ -59,7 +59,7 @@ public class PicUploadController {
                 String path = "/var/upload/images/" + dir;
                 //String path = "D:/jt-upload/images/" + dir;
                 log.info("8>>>>>>要创建文件夹为:" + path);
-                //String path = "D:/jt-upload/images" + dir;
+
                 //创建目录：
                 File _dir = new File(path);
                 // 如果目录不存在就创建
@@ -68,7 +68,8 @@ public class PicUploadController {
                     _dir.mkdirs();
                 }
                 // 上传到服务器指定目录下
-                String urlPrefix = "http://47.94.200.45:8888/images/" + dir;
+                //String urlPrefix = "http://image.jt.com/images/" + dir;
+                String urlPrefix = "http://www.dexudichan.com:8888/images/" + dir;
                 String fileName = System.currentTimeMillis() + "" + RandomUtils.nextInt(100, 999) + extFileName;
                 result.setUrl(urlPrefix + fileName);
                 log.info("8>>>>>>需要设置的urlPrefix：" + urlPrefix + "文件名称fileName为:" + fileName + ",设置的url：" + result.getUrl());

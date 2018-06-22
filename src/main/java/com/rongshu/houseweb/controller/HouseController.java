@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -192,7 +193,8 @@ public class HouseController {
      */
     @GetMapping("queryById")
     public @ResponseBody
-    SysResult queryById(@NumberFormat Long id) {
+    SysResult queryById(@NumberFormat Long id,HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
         logger.info("5>>>>>查询楼盘信息，要查询的id为:" + id);
         try {
             HouseInfo houseInfo = houseService.queryHouseById(id);
@@ -215,7 +217,8 @@ public class HouseController {
      */
     @GetMapping("findAll")
     public @ResponseBody
-    EasyUIResult findAll() {
+    EasyUIResult findAll(HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
         logger.info("6>>>>>开始查询所有楼盘信息");
         List<HouseInfo> houseInfoList = houseService.queryHouseListByStatus();
 

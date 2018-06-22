@@ -23,6 +23,22 @@
             </tr>
 
             <tr>
+                <td>首付:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiDownPayment" data-options="required:true"
+                           style="width: 150px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>开盘时间:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiOpenTime" data-options="required:true"
+                           style="width: 150px;"/>
+                </td>
+            </tr>
+
+            <tr>
                 <td>楼盘联排:</td>
                 <td>
                     <input class="easyui-numberbox" type="text" th:name="hiAttache"
@@ -141,7 +157,6 @@
             <tr>
                 <td>楼盘LOGO:</td>
                 <td>
-                    <!-- 只能上传一张图片-->
                     <a href="javascript:void(0)" class="easyui-linkbutton hiLogoFileUpload">上传楼盘LOGO</a>
                     <!-- 上传到后台的数据 -->
                     <input type="hidden" name="hiLogo"/>
@@ -151,17 +166,34 @@
             <tr>
                 <td>楼盘展示图片:</td>
                 <td>
-                    <!-- 只能上传一张图片-->
                     <a href="javascript:void(0)" class="easyui-linkbutton hiShowPicFileUpload">上传楼盘展示图片</a>
                     <!-- 上传到后台的数据 -->
                     <input type="hidden" name="hiShowPic"/>
                 </td>
             </tr>
 
+            <!-- 项目特色-->
+            <tr>
+                <td>项目特色图片:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiProjectFeaturesPicFileUpload"
+                       id="hiProjectFeaturesPicFileUpload">上传项目特色图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiProjectFeaturesPic"/>
+                </td>
+            </tr>
+            <tr>
+                <td>项目特色描述:</td>
+                <td>
+                    <textarea th:name="hiProjectFeaturesDesc" cols="60" rows="20" warp="virtual" maxlength="500"
+                              class="easyui-validatebox" required="true"></textarea>
+                </td>
+            </tr>
+
+            <!-- 楼盘优势-->
             <tr>
                 <td>楼盘优势图片:</td>
                 <td>
-                    <!-- 只能上传一张图片-->
                     <a href="javascript:void(0)" class="easyui-linkbutton hiSuperiorityPicFileUpload"
                        id="hiSuperiorityPicFileUpload">上传楼盘优势图片</a>
                     <!-- 上传到后台的数据 -->
@@ -172,22 +204,30 @@
             <tr>
                 <td>楼盘优势描述:</td>
                 <td>
-                    <textarea th:name="hiSuperiorityDesc" cols="60" rows="5" warp="virtual" maxlength="200"
+                    <textarea th:name="hiSuperiorityDesc" cols="60" rows="20" warp="virtual" maxlength="500"
                               class="easyui-validatebox" required="true"></textarea>
                 </td>
             </tr>
 
+            <!-- 区域显著 -->
             <tr>
-                <td>楼盘户型图片:</td>
+                <td>区域显著图片:</td>
                 <td>
-                    <!-- 最多是上传三张图片-->
-                    <a href="javascript:void(0)" class="easyui-linkbutton hiHouseTypePicFileUpload"
-                       id="hiHouseTypePicFileUpload">上传楼盘户型图片</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiRegionalSignificancePicFileUpload"
+                       id="hiRegionalSignificancePicFileUpload">上传区域显著图片</a>
                     <!-- 上传到后台的数据 -->
-                    <input type="hidden" name="hiHouseTypePic"/>
+                    <input type="hidden" name="hiRegionalSignificancePic"/>
+                </td>
+            </tr>
+            <tr>
+                <td>区域显著描述:</td>
+                <td>
+                    <textarea th:name="hiRegionalSignificanceDesc" cols="60" rows="20" warp="virtual" maxlength="500"
+                              class="easyui-validatebox" required="true"></textarea>
                 </td>
             </tr>
 
+            <!-- 周边配套 -->
             <tr>
                 <td>楼盘周边图片:</td>
                 <td>
@@ -202,18 +242,52 @@
             <tr>
                 <td>楼盘周边图片描述:</td>
                 <td>
-                    <textarea th:name="hiPeripheralMatchingDesc" cols="60" rows="5" warp="virtual" maxlength="200"
+                    <textarea th:name="hiPeripheralMatchingDesc" cols="60" rows="20" warp="virtual" maxlength="500"
                               class="easyui-validatebox" required="true"></textarea>
                 </td>
             </tr>
 
+            <!--户型介绍-->
             <tr>
-                <td>楼盘温馨提示:</td>
+                <td>楼盘户型图片:</td>
                 <td>
-                    <textarea th:name="hiReminderContent" cols="60" rows="5" warp="virtual" maxlength="200"
+                    <!-- 最多是上传三张图片-->
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiHouseTypePicFileUpload"
+                       id="hiHouseTypePicFileUpload">上传楼盘户型图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiHouseTypePic"/>
+                </td>
+            </tr>
+
+            <!--样板房展示-->
+            <tr>
+                <td>样板房展示图片:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiModelHousesPicFileUpload"
+                       id="hiModelHousesPicFileUpload">上传样板房展示图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiModelHousesPic"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>样板房展示描述:</td>
+                <td>
+                    <textarea th:name="hiModelHousesDesc" cols="60" rows="20" warp="virtual" maxlength="500"
                               class="easyui-validatebox" required="true"></textarea>
                 </td>
             </tr>
+
+
+            <tr>
+                <td>楼盘温馨提示:</td>
+                <td>
+                    <textarea th:name="hiReminderContent" cols="60" rows="20" warp="virtual" maxlength="500"
+                              class="easyui-validatebox" required="true"></textarea>
+                </td>
+            </tr>
+
+
             <tr>
                 <td>楼盘热线:</td>
                 <td>

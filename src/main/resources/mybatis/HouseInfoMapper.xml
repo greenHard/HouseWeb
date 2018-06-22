@@ -2,16 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.rongshu.houseweb.mapper.HouseInfoMapper">
     <resultMap id="BaseResultMap" type="com.rongshu.houseweb.entity.HouseInfo">
-        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="hi_name" property="hiName" jdbcType="VARCHAR"/>
         <result column="hi_avg_price" property="hiAvgPrice" jdbcType="VARCHAR"/>
         <result column="hi_attache" property="hiAttache" jdbcType="VARCHAR"/>
         <result column="hi_afforestation" property="hiAfforestation" jdbcType="VARCHAR"/>
         <result column="hi_decorate" property="hiDecorate" jdbcType="VARCHAR"/>
         <result column="hi_park_place" property="hiParkPlace" jdbcType="VARCHAR"/>
-        <result column="hi_plot_ratio" property="hiPlotRatio" jdbcType="VARCHAR"/>
         <result column="hi_address" property="hiAddress" jdbcType="VARCHAR"/>
+        <result column="hi_plot_ratio" property="hiPlotRatio" jdbcType="VARCHAR"/>
         <result column="hi_category" property="hiCategory" jdbcType="VARCHAR"/>
+        <result column="hi_down_payment" property="hiDownPayment" jdbcType="VARCHAR"/>
+        <result column="hi_open_time" property="hiOpenTime" jdbcType="VARCHAR"/>
         <result column="hi_year" property="hiYear" jdbcType="VARCHAR"/>
         <result column="hi_management_fee" property="hiManagementFee" jdbcType="VARCHAR"/>
         <result column="hi_construction_ratio" property="hiConstructionRatio" jdbcType="VARCHAR"/>
@@ -19,18 +21,24 @@
         <result column="hi_acreage" property="hiAcreage" jdbcType="VARCHAR"/>
         <result column="hi_delivery_time" property="hiDeliveryTime" jdbcType="VARCHAR"/>
         <result column="hi_developer" property="hiDeveloper" jdbcType="VARCHAR"/>
+        <result column="hi_logo" property="hiLogo" jdbcType="VARCHAR"/>
         <result column="hi_show_pic" property="hiShowPic" jdbcType="VARCHAR"/>
+        <result column="hi_project_features_pic" property="hiProjectFeaturesPic" jdbcType="VARCHAR"/>
+        <result column="hi_project_features_desc" property="hiProjectFeaturesDesc" jdbcType="VARCHAR"/>
         <result column="hi_superiority_pic" property="hiSuperiorityPic" jdbcType="VARCHAR"/>
         <result column="hi_superiority_desc" property="hiSuperiorityDesc" jdbcType="VARCHAR"/>
-        <result column="hi_house_type_pic" property="hiHouseTypePic" jdbcType="VARCHAR"/>
+        <result column="hi_regional_significance_pic" property="hiRegionalSignificancePic" jdbcType="VARCHAR"/>
+        <result column="hi_regional_significance_desc" property="hiRegionalSignificanceDesc" jdbcType="VARCHAR"/>
         <result column="hi_peripheral_matching_pic" property="hiPeripheralMatchingPic" jdbcType="VARCHAR"/>
         <result column="hi_peripheral_matching_desc" property="hiPeripheralMatchingDesc" jdbcType="VARCHAR"/>
+        <result column="hi_house_type_pic" property="hiHouseTypePic" jdbcType="VARCHAR"/>
+        <result column="hi_model_houses_pic" property="hiModelHousesPic" jdbcType="VARCHAR"/>
+        <result column="hi_model_houses_desc" property="hiModelHousesDesc" jdbcType="VARCHAR"/>
         <result column="hi_reminder_content" property="hiReminderContent" jdbcType="VARCHAR"/>
         <result column="hi_hot_line" property="hiHotLine" jdbcType="VARCHAR"/>
         <result column="hi_status" property="hiStatus" jdbcType="INTEGER"/>
         <result column="hi_update_date" property="hiUpdateDate" jdbcType="TIMESTAMP"/>
         <result column="hi_create_date" property="hiCreateDate" jdbcType="TIMESTAMP"/>
-        <result column="hi_logo" property="hiLogo" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -93,12 +101,15 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    ID, hi_name, hi_avg_price, hi_attache, hi_address, hi_afforestation, hi_decorate, hi_park_place,
-    hi_plot_ratio, hi_category, hi_year, hi_management_fee, hi_construction_ratio, hi_type, 
-    hi_acreage, hi_delivery_time, hi_developer, hi_show_pic, hi_superiority_pic, hi_superiority_desc, 
-    hi_house_type_pic, hi_peripheral_matching_pic, hi_peripheral_matching_desc, hi_reminder_content, 
-    hi_hot_line, hi_status, hi_update_date, hi_create_date,hi_logo
-  </sql>
+        id, hi_name, hi_avg_price, hi_attache, hi_afforestation, hi_decorate, hi_park_place,
+        hi_address, hi_plot_ratio, hi_category, hi_down_payment, hi_open_time, hi_year, hi_management_fee,
+        hi_construction_ratio, hi_type, hi_acreage, hi_delivery_time, hi_developer, hi_logo,
+        hi_show_pic, hi_project_features_pic, hi_project_features_desc, hi_superiority_pic,
+        hi_superiority_desc, hi_regional_significance_pic, hi_regional_significance_desc,
+        hi_peripheral_matching_pic, hi_peripheral_matching_desc, hi_house_type_pic, hi_model_houses_pic,
+        hi_model_houses_desc, hi_reminder_content, hi_hot_line, hi_status, hi_update_date,
+        hi_create_date
+    </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.rongshu.houseweb.entity.HouseInfoExample">
         select
         <if test="distinct">
@@ -120,12 +131,12 @@
         select
         <include refid="Base_Column_List"/>
         from house_info
-        where ID = #{id,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from house_info
-    where ID = #{id,jdbcType=BIGINT}
-  </delete>
+        delete from house_info
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
     <delete id="deleteByExample" parameterType="com.rongshu.houseweb.entity.HouseInfoExample">
         delete from house_info
         <if test="_parameter != null">
@@ -133,28 +144,41 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.rongshu.houseweb.entity.HouseInfo">
-    insert into house_info (hi_name, hi_avg_price,
-      hi_attache, hi_afforestation, hi_decorate, 
-      hi_park_place, hi_plot_ratio, hi_category, 
-      hi_year, hi_management_fee, hi_construction_ratio, 
-      hi_type, hi_acreage, hi_delivery_time, 
-      hi_developer, hi_show_pic, hi_superiority_pic, 
-      hi_superiority_desc, hi_house_type_pic, hi_peripheral_matching_pic, 
-      hi_peripheral_matching_desc, hi_reminder_content, 
-      hi_hot_line, hi_status,hi_logo)
-    values (#{hiName,jdbcType=VARCHAR}, #{hiAvgPrice,jdbcType=VARCHAR},
-      #{hiAttache,jdbcType=VARCHAR}, #{hiAfforestation,jdbcType=VARCHAR}, #{hiDecorate,jdbcType=VARCHAR}, 
-      #{hiParkPlace,jdbcType=VARCHAR}, #{hiPlotRatio,jdbcType=VARCHAR}, #{hiCategory,jdbcType=VARCHAR}, 
-      #{hiYear,jdbcType=VARCHAR}, #{hiManagementFee,jdbcType=VARCHAR}, #{hiConstructionRatio,jdbcType=VARCHAR}, 
-      #{hiType,jdbcType=VARCHAR}, #{hiAcreage,jdbcType=VARCHAR}, #{hiDeliveryTime,jdbcType=VARCHAR}, 
-      #{hiDeveloper,jdbcType=VARCHAR}, #{hiShowPic,jdbcType=VARCHAR}, #{hiSuperiorityPic,jdbcType=VARCHAR}, 
-      #{hiSuperiorityDesc,jdbcType=VARCHAR}, #{hiHouseTypePic,jdbcType=VARCHAR}, #{hiPeripheralMatchingPic,jdbcType=VARCHAR}, 
-      #{hiPeripheralMatchingDesc,jdbcType=VARCHAR}, #{hiReminderContent,jdbcType=VARCHAR}, 
-      #{hiHotLine,jdbcType=VARCHAR}, #{hiStatus,jdbcType=INTEGER}, #{hiLogo,jdbcType=VARCHAR})
-  </insert>
+        insert into house_info (id, hi_name, hi_avg_price,
+        hi_attache, hi_afforestation, hi_decorate,
+        hi_park_place, hi_address, hi_plot_ratio,
+        hi_category, hi_down_payment, hi_open_time,
+        hi_year, hi_management_fee, hi_construction_ratio,
+        hi_type, hi_acreage, hi_delivery_time,
+        hi_developer, hi_logo, hi_show_pic,
+        hi_project_features_pic, hi_project_features_desc,
+        hi_superiority_pic, hi_superiority_desc, hi_regional_significance_pic,
+        hi_regional_significance_desc, hi_peripheral_matching_pic,
+        hi_peripheral_matching_desc, hi_house_type_pic,
+        hi_model_houses_pic, hi_model_houses_desc, hi_reminder_content,
+        hi_hot_line, hi_status, hi_update_date,
+        hi_create_date)
+        values (#{id,jdbcType=BIGINT}, #{hiName,jdbcType=VARCHAR}, #{hiAvgPrice,jdbcType=VARCHAR},
+        #{hiAttache,jdbcType=VARCHAR}, #{hiAfforestation,jdbcType=VARCHAR}, #{hiDecorate,jdbcType=VARCHAR},
+        #{hiParkPlace,jdbcType=VARCHAR}, #{hiAddress,jdbcType=VARCHAR}, #{hiPlotRatio,jdbcType=VARCHAR},
+        #{hiCategory,jdbcType=VARCHAR}, #{hiDownPayment,jdbcType=VARCHAR}, #{hiOpenTime,jdbcType=VARCHAR},
+        #{hiYear,jdbcType=VARCHAR}, #{hiManagementFee,jdbcType=VARCHAR}, #{hiConstructionRatio,jdbcType=VARCHAR},
+        #{hiType,jdbcType=VARCHAR}, #{hiAcreage,jdbcType=VARCHAR}, #{hiDeliveryTime,jdbcType=VARCHAR},
+        #{hiDeveloper,jdbcType=VARCHAR}, #{hiLogo,jdbcType=VARCHAR}, #{hiShowPic,jdbcType=VARCHAR},
+        #{hiProjectFeaturesPic,jdbcType=VARCHAR}, #{hiProjectFeaturesDesc,jdbcType=VARCHAR},
+        #{hiSuperiorityPic,jdbcType=VARCHAR}, #{hiSuperiorityDesc,jdbcType=VARCHAR}, #{hiRegionalSignificancePic,jdbcType=VARCHAR},
+        #{hiRegionalSignificanceDesc,jdbcType=VARCHAR}, #{hiPeripheralMatchingPic,jdbcType=VARCHAR},
+        #{hiPeripheralMatchingDesc,jdbcType=VARCHAR}, #{hiHouseTypePic,jdbcType=VARCHAR},
+        #{hiModelHousesPic,jdbcType=VARCHAR}, #{hiModelHousesDesc,jdbcType=VARCHAR}, #{hiReminderContent,jdbcType=VARCHAR},
+        #{hiHotLine,jdbcType=VARCHAR}, #{hiStatus,jdbcType=INTEGER}, #{hiUpdateDate,jdbcType=TIMESTAMP},
+        #{hiCreateDate,jdbcType=TIMESTAMP})
+    </insert>
     <insert id="insertSelective" parameterType="com.rongshu.houseweb.entity.HouseInfo">
         insert into house_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
             <if test="hiName != null">
                 hi_name,
             </if>
@@ -167,20 +191,26 @@
             <if test="hiAfforestation != null">
                 hi_afforestation,
             </if>
-            <if test="hiAddress != null">
-                hi_address,
-            </if>
             <if test="hiDecorate != null">
                 hi_decorate,
             </if>
             <if test="hiParkPlace != null">
                 hi_park_place,
             </if>
+            <if test="hiAddress != null">
+                hi_address,
+            </if>
             <if test="hiPlotRatio != null">
                 hi_plot_ratio,
             </if>
             <if test="hiCategory != null">
                 hi_category,
+            </if>
+            <if test="hiDownPayment != null">
+                hi_down_payment,
+            </if>
+            <if test="hiOpenTime != null">
+                hi_open_time,
             </if>
             <if test="hiYear != null">
                 hi_year,
@@ -203,8 +233,17 @@
             <if test="hiDeveloper != null">
                 hi_developer,
             </if>
+            <if test="hiLogo != null">
+                hi_logo,
+            </if>
             <if test="hiShowPic != null">
                 hi_show_pic,
+            </if>
+            <if test="hiProjectFeaturesPic != null">
+                hi_project_features_pic,
+            </if>
+            <if test="hiProjectFeaturesDesc != null">
+                hi_project_features_desc,
             </if>
             <if test="hiSuperiorityPic != null">
                 hi_superiority_pic,
@@ -212,14 +251,26 @@
             <if test="hiSuperiorityDesc != null">
                 hi_superiority_desc,
             </if>
-            <if test="hiHouseTypePic != null">
-                hi_house_type_pic,
+            <if test="hiRegionalSignificancePic != null">
+                hi_regional_significance_pic,
+            </if>
+            <if test="hiRegionalSignificanceDesc != null">
+                hi_regional_significance_desc,
             </if>
             <if test="hiPeripheralMatchingPic != null">
                 hi_peripheral_matching_pic,
             </if>
             <if test="hiPeripheralMatchingDesc != null">
                 hi_peripheral_matching_desc,
+            </if>
+            <if test="hiHouseTypePic != null">
+                hi_house_type_pic,
+            </if>
+            <if test="hiModelHousesPic != null">
+                hi_model_houses_pic,
+            </if>
+            <if test="hiModelHousesDesc != null">
+                hi_model_houses_desc,
             </if>
             <if test="hiReminderContent != null">
                 hi_reminder_content,
@@ -230,11 +281,17 @@
             <if test="hiStatus != null">
                 hi_status,
             </if>
-            <if test="hiLogo != null">
-                hi_logo,
+            <if test="hiUpdateDate != null">
+                hi_update_date,
+            </if>
+            <if test="hiCreateDate != null">
+                hi_create_date,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
             <if test="hiName != null">
                 #{hiName,jdbcType=VARCHAR},
             </if>
@@ -253,11 +310,20 @@
             <if test="hiParkPlace != null">
                 #{hiParkPlace,jdbcType=VARCHAR},
             </if>
+            <if test="hiAddress != null">
+                #{hiAddress,jdbcType=VARCHAR},
+            </if>
             <if test="hiPlotRatio != null">
                 #{hiPlotRatio,jdbcType=VARCHAR},
             </if>
             <if test="hiCategory != null">
                 #{hiCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="hiDownPayment != null">
+                #{hiDownPayment,jdbcType=VARCHAR},
+            </if>
+            <if test="hiOpenTime != null">
+                #{hiOpenTime,jdbcType=VARCHAR},
             </if>
             <if test="hiYear != null">
                 #{hiYear,jdbcType=VARCHAR},
@@ -280,8 +346,17 @@
             <if test="hiDeveloper != null">
                 #{hiDeveloper,jdbcType=VARCHAR},
             </if>
+            <if test="hiLogo != null">
+                #{hiLogo,jdbcType=VARCHAR},
+            </if>
             <if test="hiShowPic != null">
                 #{hiShowPic,jdbcType=VARCHAR},
+            </if>
+            <if test="hiProjectFeaturesPic != null">
+                #{hiProjectFeaturesPic,jdbcType=VARCHAR},
+            </if>
+            <if test="hiProjectFeaturesDesc != null">
+                #{hiProjectFeaturesDesc,jdbcType=VARCHAR},
             </if>
             <if test="hiSuperiorityPic != null">
                 #{hiSuperiorityPic,jdbcType=VARCHAR},
@@ -289,14 +364,26 @@
             <if test="hiSuperiorityDesc != null">
                 #{hiSuperiorityDesc,jdbcType=VARCHAR},
             </if>
-            <if test="hiHouseTypePic != null">
-                #{hiHouseTypePic,jdbcType=VARCHAR},
+            <if test="hiRegionalSignificancePic != null">
+                #{hiRegionalSignificancePic,jdbcType=VARCHAR},
+            </if>
+            <if test="hiRegionalSignificanceDesc != null">
+                #{hiRegionalSignificanceDesc,jdbcType=VARCHAR},
             </if>
             <if test="hiPeripheralMatchingPic != null">
                 #{hiPeripheralMatchingPic,jdbcType=VARCHAR},
             </if>
             <if test="hiPeripheralMatchingDesc != null">
                 #{hiPeripheralMatchingDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="hiHouseTypePic != null">
+                #{hiHouseTypePic,jdbcType=VARCHAR},
+            </if>
+            <if test="hiModelHousesPic != null">
+                #{hiModelHousesPic,jdbcType=VARCHAR},
+            </if>
+            <if test="hiModelHousesDesc != null">
+                #{hiModelHousesDesc,jdbcType=VARCHAR},
             </if>
             <if test="hiReminderContent != null">
                 #{hiReminderContent,jdbcType=VARCHAR},
@@ -307,8 +394,11 @@
             <if test="hiStatus != null">
                 #{hiStatus,jdbcType=INTEGER},
             </if>
-            <if test="hiLogo != null">
-                #{hiLogo,jdbcType=VARCHAR},
+            <if test="hiUpdateDate != null">
+                #{hiUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="hiCreateDate != null">
+                #{hiCreateDate,jdbcType=TIMESTAMP},
             </if>
         </trim>
     </insert>
@@ -323,7 +413,7 @@
         update house_info
         <set>
             <if test="record.id != null">
-                ID = #{record.id,jdbcType=BIGINT},
+                id = #{record.id,jdbcType=BIGINT},
             </if>
             <if test="record.hiName != null">
                 hi_name = #{record.hiName,jdbcType=VARCHAR},
@@ -337,20 +427,26 @@
             <if test="record.hiAfforestation != null">
                 hi_afforestation = #{record.hiAfforestation,jdbcType=VARCHAR},
             </if>
-            <if test="record.address != null">
-                hi_address = #{record.hiAddress,jdbcType=VARCHAR},
-            </if>
             <if test="record.hiDecorate != null">
                 hi_decorate = #{record.hiDecorate,jdbcType=VARCHAR},
             </if>
             <if test="record.hiParkPlace != null">
                 hi_park_place = #{record.hiParkPlace,jdbcType=VARCHAR},
             </if>
+            <if test="record.hiAddress != null">
+                hi_address = #{record.hiAddress,jdbcType=VARCHAR},
+            </if>
             <if test="record.hiPlotRatio != null">
                 hi_plot_ratio = #{record.hiPlotRatio,jdbcType=VARCHAR},
             </if>
             <if test="record.hiCategory != null">
                 hi_category = #{record.hiCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="record.hiDownPayment != null">
+                hi_down_payment = #{record.hiDownPayment,jdbcType=VARCHAR},
+            </if>
+            <if test="record.hiOpenTime != null">
+                hi_open_time = #{record.hiOpenTime,jdbcType=VARCHAR},
             </if>
             <if test="record.hiYear != null">
                 hi_year = #{record.hiYear,jdbcType=VARCHAR},
@@ -373,8 +469,17 @@
             <if test="record.hiDeveloper != null">
                 hi_developer = #{record.hiDeveloper,jdbcType=VARCHAR},
             </if>
+            <if test="record.hiLogo != null">
+                hi_logo = #{record.hiLogo,jdbcType=VARCHAR},
+            </if>
             <if test="record.hiShowPic != null">
                 hi_show_pic = #{record.hiShowPic,jdbcType=VARCHAR},
+            </if>
+            <if test="record.hiProjectFeaturesPic != null">
+                hi_project_features_pic = #{record.hiProjectFeaturesPic,jdbcType=VARCHAR},
+            </if>
+            <if test="record.hiProjectFeaturesDesc != null">
+                hi_project_features_desc = #{record.hiProjectFeaturesDesc,jdbcType=VARCHAR},
             </if>
             <if test="record.hiSuperiorityPic != null">
                 hi_superiority_pic = #{record.hiSuperiorityPic,jdbcType=VARCHAR},
@@ -382,14 +487,26 @@
             <if test="record.hiSuperiorityDesc != null">
                 hi_superiority_desc = #{record.hiSuperiorityDesc,jdbcType=VARCHAR},
             </if>
-            <if test="record.hiHouseTypePic != null">
-                hi_house_type_pic = #{record.hiHouseTypePic,jdbcType=VARCHAR},
+            <if test="record.hiRegionalSignificancePic != null">
+                hi_regional_significance_pic = #{record.hiRegionalSignificancePic,jdbcType=VARCHAR},
+            </if>
+            <if test="record.hiRegionalSignificanceDesc != null">
+                hi_regional_significance_desc = #{record.hiRegionalSignificanceDesc,jdbcType=VARCHAR},
             </if>
             <if test="record.hiPeripheralMatchingPic != null">
                 hi_peripheral_matching_pic = #{record.hiPeripheralMatchingPic,jdbcType=VARCHAR},
             </if>
             <if test="record.hiPeripheralMatchingDesc != null">
                 hi_peripheral_matching_desc = #{record.hiPeripheralMatchingDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="record.hiHouseTypePic != null">
+                hi_house_type_pic = #{record.hiHouseTypePic,jdbcType=VARCHAR},
+            </if>
+            <if test="record.hiModelHousesPic != null">
+                hi_model_houses_pic = #{record.hiModelHousesPic,jdbcType=VARCHAR},
+            </if>
+            <if test="record.hiModelHousesDesc != null">
+                hi_model_houses_desc = #{record.hiModelHousesDesc,jdbcType=VARCHAR},
             </if>
             <if test="record.hiReminderContent != null">
                 hi_reminder_content = #{record.hiReminderContent,jdbcType=VARCHAR},
@@ -400,8 +517,11 @@
             <if test="record.hiStatus != null">
                 hi_status = #{record.hiStatus,jdbcType=INTEGER},
             </if>
-            <if test="record.hiLogo != null">
-                hi_logo = #{record.hiLogo,jdbcType=VARCHAR},
+            <if test="record.hiUpdateDate != null">
+                hi_update_date = #{record.hiUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.hiCreateDate != null">
+                hi_create_date = #{record.hiCreateDate,jdbcType=TIMESTAMP},
             </if>
         </set>
         <if test="_parameter != null">
@@ -410,15 +530,18 @@
     </update>
     <update id="updateByExample" parameterType="map">
         update house_info
-        set hi_name = #{record.hiName,jdbcType=VARCHAR},
+        set id = #{record.id,jdbcType=BIGINT},
+        hi_name = #{record.hiName,jdbcType=VARCHAR},
         hi_avg_price = #{record.hiAvgPrice,jdbcType=VARCHAR},
         hi_attache = #{record.hiAttache,jdbcType=VARCHAR},
         hi_afforestation = #{record.hiAfforestation,jdbcType=VARCHAR},
-        hi_address = #{record.hiAddress,jdbcType=VARCHAR},
         hi_decorate = #{record.hiDecorate,jdbcType=VARCHAR},
         hi_park_place = #{record.hiParkPlace,jdbcType=VARCHAR},
+        hi_address = #{record.hiAddress,jdbcType=VARCHAR},
         hi_plot_ratio = #{record.hiPlotRatio,jdbcType=VARCHAR},
         hi_category = #{record.hiCategory,jdbcType=VARCHAR},
+        hi_down_payment = #{record.hiDownPayment,jdbcType=VARCHAR},
+        hi_open_time = #{record.hiOpenTime,jdbcType=VARCHAR},
         hi_year = #{record.hiYear,jdbcType=VARCHAR},
         hi_management_fee = #{record.hiManagementFee,jdbcType=VARCHAR},
         hi_construction_ratio = #{record.hiConstructionRatio,jdbcType=VARCHAR},
@@ -426,16 +549,24 @@
         hi_acreage = #{record.hiAcreage,jdbcType=VARCHAR},
         hi_delivery_time = #{record.hiDeliveryTime,jdbcType=VARCHAR},
         hi_developer = #{record.hiDeveloper,jdbcType=VARCHAR},
+        hi_logo = #{record.hiLogo,jdbcType=VARCHAR},
         hi_show_pic = #{record.hiShowPic,jdbcType=VARCHAR},
+        hi_project_features_pic = #{record.hiProjectFeaturesPic,jdbcType=VARCHAR},
+        hi_project_features_desc = #{record.hiProjectFeaturesDesc,jdbcType=VARCHAR},
         hi_superiority_pic = #{record.hiSuperiorityPic,jdbcType=VARCHAR},
         hi_superiority_desc = #{record.hiSuperiorityDesc,jdbcType=VARCHAR},
-        hi_house_type_pic = #{record.hiHouseTypePic,jdbcType=VARCHAR},
+        hi_regional_significance_pic = #{record.hiRegionalSignificancePic,jdbcType=VARCHAR},
+        hi_regional_significance_desc = #{record.hiRegionalSignificanceDesc,jdbcType=VARCHAR},
         hi_peripheral_matching_pic = #{record.hiPeripheralMatchingPic,jdbcType=VARCHAR},
         hi_peripheral_matching_desc = #{record.hiPeripheralMatchingDesc,jdbcType=VARCHAR},
+        hi_house_type_pic = #{record.hiHouseTypePic,jdbcType=VARCHAR},
+        hi_model_houses_pic = #{record.hiModelHousesPic,jdbcType=VARCHAR},
+        hi_model_houses_desc = #{record.hiModelHousesDesc,jdbcType=VARCHAR},
         hi_reminder_content = #{record.hiReminderContent,jdbcType=VARCHAR},
         hi_hot_line = #{record.hiHotLine,jdbcType=VARCHAR},
         hi_status = #{record.hiStatus,jdbcType=INTEGER},
-        hi_logo = #{record.hiLogo,jdbcType=VARCHAR}
+        hi_update_date = #{record.hiUpdateDate,jdbcType=TIMESTAMP},
+        hi_create_date = #{record.hiCreateDate,jdbcType=TIMESTAMP}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
@@ -455,20 +586,26 @@
             <if test="hiAfforestation != null">
                 hi_afforestation = #{hiAfforestation,jdbcType=VARCHAR},
             </if>
-            <if test="hiAddress != null">
-                hi_address = #{hiAddress,jdbcType=VARCHAR},
-            </if>
             <if test="hiDecorate != null">
                 hi_decorate = #{hiDecorate,jdbcType=VARCHAR},
             </if>
             <if test="hiParkPlace != null">
                 hi_park_place = #{hiParkPlace,jdbcType=VARCHAR},
             </if>
+            <if test="hiAddress != null">
+                hi_address = #{hiAddress,jdbcType=VARCHAR},
+            </if>
             <if test="hiPlotRatio != null">
                 hi_plot_ratio = #{hiPlotRatio,jdbcType=VARCHAR},
             </if>
             <if test="hiCategory != null">
                 hi_category = #{hiCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="hiDownPayment != null">
+                hi_down_payment = #{hiDownPayment,jdbcType=VARCHAR},
+            </if>
+            <if test="hiOpenTime != null">
+                hi_open_time = #{hiOpenTime,jdbcType=VARCHAR},
             </if>
             <if test="hiYear != null">
                 hi_year = #{hiYear,jdbcType=VARCHAR},
@@ -491,8 +628,17 @@
             <if test="hiDeveloper != null">
                 hi_developer = #{hiDeveloper,jdbcType=VARCHAR},
             </if>
+            <if test="hiLogo != null">
+                hi_logo = #{hiLogo,jdbcType=VARCHAR},
+            </if>
             <if test="hiShowPic != null">
                 hi_show_pic = #{hiShowPic,jdbcType=VARCHAR},
+            </if>
+            <if test="hiProjectFeaturesPic != null">
+                hi_project_features_pic = #{hiProjectFeaturesPic,jdbcType=VARCHAR},
+            </if>
+            <if test="hiProjectFeaturesDesc != null">
+                hi_project_features_desc = #{hiProjectFeaturesDesc,jdbcType=VARCHAR},
             </if>
             <if test="hiSuperiorityPic != null">
                 hi_superiority_pic = #{hiSuperiorityPic,jdbcType=VARCHAR},
@@ -500,14 +646,26 @@
             <if test="hiSuperiorityDesc != null">
                 hi_superiority_desc = #{hiSuperiorityDesc,jdbcType=VARCHAR},
             </if>
-            <if test="hiHouseTypePic != null">
-                hi_house_type_pic = #{hiHouseTypePic,jdbcType=VARCHAR},
+            <if test="hiRegionalSignificancePic != null">
+                hi_regional_significance_pic = #{hiRegionalSignificancePic,jdbcType=VARCHAR},
+            </if>
+            <if test="hiRegionalSignificanceDesc != null">
+                hi_regional_significance_desc = #{hiRegionalSignificanceDesc,jdbcType=VARCHAR},
             </if>
             <if test="hiPeripheralMatchingPic != null">
                 hi_peripheral_matching_pic = #{hiPeripheralMatchingPic,jdbcType=VARCHAR},
             </if>
             <if test="hiPeripheralMatchingDesc != null">
                 hi_peripheral_matching_desc = #{hiPeripheralMatchingDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="hiHouseTypePic != null">
+                hi_house_type_pic = #{hiHouseTypePic,jdbcType=VARCHAR},
+            </if>
+            <if test="hiModelHousesPic != null">
+                hi_model_houses_pic = #{hiModelHousesPic,jdbcType=VARCHAR},
+            </if>
+            <if test="hiModelHousesDesc != null">
+                hi_model_houses_desc = #{hiModelHousesDesc,jdbcType=VARCHAR},
             </if>
             <if test="hiReminderContent != null">
                 hi_reminder_content = #{hiReminderContent,jdbcType=VARCHAR},
@@ -518,44 +676,55 @@
             <if test="hiStatus != null">
                 hi_status = #{hiStatus,jdbcType=INTEGER},
             </if>
-            <if test="hiLogo != null">
-                hi_logo = #{hiLogo,jdbcType=VARCHAR}
+            <if test="hiUpdateDate != null">
+                hi_update_date = #{hiUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="hiCreateDate != null">
+                hi_create_date = #{hiCreateDate,jdbcType=TIMESTAMP},
             </if>
         </set>
-        where ID = #{id,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.rongshu.houseweb.entity.HouseInfo">
-    update house_info
-    set hi_name = #{hiName,jdbcType=VARCHAR},
-      hi_avg_price = #{hiAvgPrice,jdbcType=VARCHAR},
-      hi_attache = #{hiAttache,jdbcType=VARCHAR},
-      hi_afforestation = #{hiAfforestation,jdbcType=VARCHAR},
-      hi_address = #{hiAddress,jdbcType=VARCHAR},
-      hi_decorate = #{hiDecorate,jdbcType=VARCHAR},
-      hi_park_place = #{hiParkPlace,jdbcType=VARCHAR},
-      hi_plot_ratio = #{hiPlotRatio,jdbcType=VARCHAR},
-      hi_category = #{hiCategory,jdbcType=VARCHAR},
-      hi_year = #{hiYear,jdbcType=VARCHAR},
-      hi_management_fee = #{hiManagementFee,jdbcType=VARCHAR},
-      hi_construction_ratio = #{hiConstructionRatio,jdbcType=VARCHAR},
-      hi_type = #{hiType,jdbcType=VARCHAR},
-      hi_acreage = #{hiAcreage,jdbcType=VARCHAR},
-      hi_delivery_time = #{hiDeliveryTime,jdbcType=VARCHAR},
-      hi_developer = #{hiDeveloper,jdbcType=VARCHAR},
-      hi_show_pic = #{hiShowPic,jdbcType=VARCHAR},
-      hi_superiority_pic = #{hiSuperiorityPic,jdbcType=VARCHAR},
-      hi_superiority_desc = #{hiSuperiorityDesc,jdbcType=VARCHAR},
-      hi_house_type_pic = #{hiHouseTypePic,jdbcType=VARCHAR},
-      hi_peripheral_matching_pic = #{hiPeripheralMatchingPic,jdbcType=VARCHAR},
-      hi_peripheral_matching_desc = #{hiPeripheralMatchingDesc,jdbcType=VARCHAR},
-      hi_reminder_content = #{hiReminderContent,jdbcType=VARCHAR},
-      hi_hot_line = #{hiHotLine,jdbcType=VARCHAR},
-      hi_status = #{hiStatus,jdbcType=INTEGER},
-      hi_update_date = #{hiUpdateDate,jdbcType=TIMESTAMP},
-      hi_create_date = #{hiCreateDate,jdbcType=TIMESTAMP},
-      hi_logo = #{hiLogo,jdbcType=VARCHAR}
-    where ID = #{id,jdbcType=BIGINT}
-  </update>
+        update house_info
+        set hi_name = #{hiName,jdbcType=VARCHAR},
+        hi_avg_price = #{hiAvgPrice,jdbcType=VARCHAR},
+        hi_attache = #{hiAttache,jdbcType=VARCHAR},
+        hi_afforestation = #{hiAfforestation,jdbcType=VARCHAR},
+        hi_decorate = #{hiDecorate,jdbcType=VARCHAR},
+        hi_park_place = #{hiParkPlace,jdbcType=VARCHAR},
+        hi_address = #{hiAddress,jdbcType=VARCHAR},
+        hi_plot_ratio = #{hiPlotRatio,jdbcType=VARCHAR},
+        hi_category = #{hiCategory,jdbcType=VARCHAR},
+        hi_down_payment = #{hiDownPayment,jdbcType=VARCHAR},
+        hi_open_time = #{hiOpenTime,jdbcType=VARCHAR},
+        hi_year = #{hiYear,jdbcType=VARCHAR},
+        hi_management_fee = #{hiManagementFee,jdbcType=VARCHAR},
+        hi_construction_ratio = #{hiConstructionRatio,jdbcType=VARCHAR},
+        hi_type = #{hiType,jdbcType=VARCHAR},
+        hi_acreage = #{hiAcreage,jdbcType=VARCHAR},
+        hi_delivery_time = #{hiDeliveryTime,jdbcType=VARCHAR},
+        hi_developer = #{hiDeveloper,jdbcType=VARCHAR},
+        hi_logo = #{hiLogo,jdbcType=VARCHAR},
+        hi_show_pic = #{hiShowPic,jdbcType=VARCHAR},
+        hi_project_features_pic = #{hiProjectFeaturesPic,jdbcType=VARCHAR},
+        hi_project_features_desc = #{hiProjectFeaturesDesc,jdbcType=VARCHAR},
+        hi_superiority_pic = #{hiSuperiorityPic,jdbcType=VARCHAR},
+        hi_superiority_desc = #{hiSuperiorityDesc,jdbcType=VARCHAR},
+        hi_regional_significance_pic = #{hiRegionalSignificancePic,jdbcType=VARCHAR},
+        hi_regional_significance_desc = #{hiRegionalSignificanceDesc,jdbcType=VARCHAR},
+        hi_peripheral_matching_pic = #{hiPeripheralMatchingPic,jdbcType=VARCHAR},
+        hi_peripheral_matching_desc = #{hiPeripheralMatchingDesc,jdbcType=VARCHAR},
+        hi_house_type_pic = #{hiHouseTypePic,jdbcType=VARCHAR},
+        hi_model_houses_pic = #{hiModelHousesPic,jdbcType=VARCHAR},
+        hi_model_houses_desc = #{hiModelHousesDesc,jdbcType=VARCHAR},
+        hi_reminder_content = #{hiReminderContent,jdbcType=VARCHAR},
+        hi_hot_line = #{hiHotLine,jdbcType=VARCHAR},
+        hi_status = #{hiStatus,jdbcType=INTEGER},
+        hi_update_date = #{hiUpdateDate,jdbcType=TIMESTAMP},
+        hi_create_date = #{hiCreateDate,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 
     <!-- 楼盘列表，按修改时间倒序 -->
     <select id="queryHouseList" resultType="com.rongshu.houseweb.entity.HouseInfo">

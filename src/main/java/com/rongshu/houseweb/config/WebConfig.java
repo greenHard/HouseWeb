@@ -32,4 +32,5 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/house/**,/index/**").excludePathPatterns("/user/login","/user/doLogin","user/findAll","user/queryById");
         super.addInterceptors(registry);
     }
+
 }

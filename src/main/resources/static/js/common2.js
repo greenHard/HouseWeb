@@ -117,8 +117,8 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
                     var editor = this;
                     editor.plugin.multiImageDialog({
                         clickFn: function (urlList) {
-                            if (urlList.length > 1) {
-                                alert("只允许上传一张图片");
+                            if (urlList.length > 3) {
+                                alert("只允许上传三张图片");
                                 return;
                             }
                             form.find(".hiLogo ul li").remove();
@@ -135,7 +135,7 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
             });
         });
 
-        // 楼盘楼盘展示图片上传
+        // 楼盘展示图片上传
         $(".hiShowPicFileUpload").each(function (i, e) {
             var _ele = $(e);
             _ele.siblings("div.hiShowPic").remove();
@@ -159,7 +159,7 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
                     editor.plugin.multiImageDialog({
                         clickFn: function (urlList) {
                             if (urlList.length > 1) {
-                                alert("只允许上传一张图片");
+                                alert("只允许上传一张楼盘展示图片");
                                 return;
                             }
                             form.find(".hiShowPic ul li").remove();
@@ -169,6 +169,47 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
                                 form.find(".hiShowPic ul").append("<li><a href='" + data.url + "' target='_blank'><img src='" + data.url + "' width='80' height='50' /></a></li>");
                             });
                             form.find("[name=hiShowPic]").val(imgArray.join(","));
+                            editor.hideDialog();
+                        }
+                    });
+                });
+            });
+        });
+
+        // 楼盘项目特色图片上传
+        $(".hiProjectFeaturesPicFileUpload").each(function (i, e) {
+            var _ele = $(e);
+            _ele.siblings("div.hiProjectFeaturesPic").remove();
+            _ele.after('\
+    			<div class="hiProjectFeaturesPic">\
+        			<ul></ul>\
+        		</div>');
+            // 回显图片
+            if (data && data.pics) {
+                var imgs = data.pics.split(",");
+                for (var i in imgs) {
+                    if ($.trim(imgs[i]).length > 0) {
+                        _ele.siblings(".hiProjectFeaturesPic").find("ul").append("<li><a href='" + imgs[i] + "' target='_blank'><img src='" + imgs[i] + "' width='80' height='50' /></a></li>");
+                    }
+                }
+            }
+            $(e).click(function () {
+                var form = $(this).parentsUntil("form").parent("form");
+                KindEditor.editor(TT.kingEditorParams).loadPlugin('multiimage', function () {
+                    var editor = this;
+                    editor.plugin.multiImageDialog({
+                        clickFn: function (urlList) {
+                            // if (urlList.length > 1) {
+                            //     alert("只允许上传一张图片");
+                            //     return;
+                            // }
+                            form.find(".hiProjectFeaturesPic ul li").remove();
+                            var imgArray = [];
+                            KindEditor.each(urlList, function (i, data) {
+                                imgArray.push(data.url);
+                                form.find(".hiProjectFeaturesPic ul").append("<li><a href='" + data.url + "' target='_blank'><img src='" + data.url + "' width='80' height='50' /></a></li>");
+                            });
+                            form.find("[name=hiProjectFeaturesPic]").val(imgArray.join(","));
                             editor.hideDialog();
                         }
                     });
@@ -200,10 +241,10 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
                     var editor = this;
                     editor.plugin.multiImageDialog({
                         clickFn: function (urlList) {
-                            if (urlList.length > 1) {
-                                alert("只允许上传一张图片");
-                                return;
-                            }
+                            // if (urlList.length > 1) {
+                            //     alert("只允许上传一张图片");
+                            //     return;
+                            // }
                             form.find(".hiSuperiorityPic ul li").remove();
                             var imgArray = [];
                             KindEditor.each(urlList, function (i, data) {
@@ -211,6 +252,89 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
                                 form.find(".hiSuperiorityPic ul").append("<li><a href='" + data.url + "' target='_blank'><img src='" + data.url + "' width='80' height='50' /></a></li>");
                             });
                             form.find("[name=hiSuperiorityPic]").val(imgArray.join(","));
+                            editor.hideDialog();
+                        }
+                    });
+                });
+            });
+        });
+
+        // 区域显著图片上传
+        $("#hiRegionalSignificancePicFileUpload").each(function (i, e) {
+            var _ele = $(e);
+            _ele.siblings("div.hiRegionalSignificancePic").remove();
+            _ele.after('\
+    			<div class="hiRegionalSignificancePic">\
+        			<ul></ul>\
+        		</div>');
+            // 回显图片
+            if (data && data.pics) {
+                var imgs = data.pics.split(",");
+                for (var i in imgs) {
+                    if ($.trim(imgs[i]).length > 0) {
+                        _ele.siblings(".hiRegionalSignificancePic").find("ul").append("<li><a href='" + imgs[i] + "' target='_blank'><img src='" + imgs[i] + "' width='80' height='50' /></a></li>");
+                    }
+                }
+            }
+            $(e).click(function () {
+                var form = $(this).parentsUntil("form").parent("form");
+                KindEditor.editor(TT.kingEditorParams).loadPlugin('multiimage', function () {
+                    var editor = this;
+                    editor.plugin.multiImageDialog({
+                        clickFn: function (urlList) {
+                            // if (urlList.length > 1) {
+                            //     alert("只允许上传一张图片");
+                            //     return;
+                            // }
+                            form.find(".hiRegionalSignificancePic ul li").remove();
+                            var imgArray = [];
+                            KindEditor.each(urlList, function (i, data) {
+                                imgArray.push(data.url);
+                                form.find(".hiRegionalSignificancePic ul").append("<li><a href='" + data.url + "' target='_blank'><img src='" + data.url + "' width='80' height='50' /></a></li>");
+                            });
+                            form.find("[name=hiRegionalSignificancePic]").val(imgArray.join(","));
+                            editor.hideDialog();
+                        }
+                    });
+                });
+            });
+        });
+
+
+        // 楼盘周边图片
+        $("#hiPeripheralMatchingPicFileUpload").each(function (i, e) {
+            var _ele = $(e);
+            _ele.siblings("div.hiPeripheralMatchingPic").remove();
+            _ele.after('\
+    			<div class="hiPeripheralMatchingPic">\
+        			<ul></ul>\
+        		</div>');
+            // 回显图片
+            if (data && data.pics) {
+                var imgs = data.pics.split(",");
+                for (var i in imgs) {
+                    if ($.trim(imgs[i]).length > 0) {
+                        _ele.siblings(".hiPeripheralMatchingPic").find("ul").append("<li><a href='" + imgs[i] + "' target='_blank'><img src='" + imgs[i] + "' width='80' height='50' /></a></li>");
+                    }
+                }
+            }
+            $(e).click(function () {
+                var form = $(this).parentsUntil("form").parent("form");
+                KindEditor.editor(TT.kingEditorParams).loadPlugin('multiimage', function () {
+                    var editor = this;
+                    editor.plugin.multiImageDialog({
+                        clickFn: function (urlList) {
+                            // if (urlList.length > 3) {
+                            //     alert("只允许上传三张图片");
+                            //     return;
+                            // }
+                            form.find(".hiPeripheralMatchingPic ul li").remove();
+                            var imgArray = [];
+                            KindEditor.each(urlList, function (i, data) {
+                                imgArray.push(data.url);
+                                form.find(".hiPeripheralMatchingPic ul").append("<li><a href='" + data.url + "' target='_blank'><img src='" + data.url + "' width='80' height='50' /></a></li>");
+                            });
+                            form.find("[name=hiPeripheralMatchingPic]").val(imgArray.join(","));
                             editor.hideDialog();
                         }
                     });
@@ -241,10 +365,10 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
                     var editor = this;
                     editor.plugin.multiImageDialog({
                         clickFn: function (urlList) {
-                            if (urlList.length > 3) {
-                                alert("只允许上传三张图片");
-                                return;
-                            }
+                            // if (urlList.length > 3) {
+                            //     alert("只允许上传三张图片");
+                            //     return;
+                            // }
                             form.find(".hiHouseTypePic ul li").remove();
                             var imgArray = [];
                             KindEditor.each(urlList, function (i, data) {
@@ -259,12 +383,12 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
             });
         });
 
-        // 楼盘周边图片
-        $("#hiPeripheralMatchingPicFileUpload").each(function (i, e) {
+        // 楼盘户型图片
+        $("#hiModelHousesPicFileUpload").each(function (i, e) {
             var _ele = $(e);
-            _ele.siblings("div.hiPeripheralMatchingPic").remove();
+            _ele.siblings("div.hiModelHousesPic").remove();
             _ele.after('\
-    			<div class="hiPeripheralMatchingPic">\
+    			<div class="hiModelHousesPic">\
         			<ul></ul>\
         		</div>');
             // 回显图片
@@ -272,7 +396,7 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
                 var imgs = data.pics.split(",");
                 for (var i in imgs) {
                     if ($.trim(imgs[i]).length > 0) {
-                        _ele.siblings(".hiPeripheralMatchingPic").find("ul").append("<li><a href='" + imgs[i] + "' target='_blank'><img src='" + imgs[i] + "' width='80' height='50' /></a></li>");
+                        _ele.siblings(".hiModelHousesPic").find("ul").append("<li><a href='" + imgs[i] + "' target='_blank'><img src='" + imgs[i] + "' width='80' height='50' /></a></li>");
                     }
                 }
             }
@@ -282,17 +406,17 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
                     var editor = this;
                     editor.plugin.multiImageDialog({
                         clickFn: function (urlList) {
-                            if (urlList.length > 3) {
-                                alert("只允许上传三张图片");
-                                return;
-                            }
-                            form.find(".hiPeripheralMatchingPic ul li").remove();
+                            // if (urlList.length > 3) {
+                            //     alert("只允许上传三张图片");
+                            //     return;
+                            // }
+                            form.find(".hiModelHousesPic ul li").remove();
                             var imgArray = [];
                             KindEditor.each(urlList, function (i, data) {
                                 imgArray.push(data.url);
-                                form.find(".hiPeripheralMatchingPic ul").append("<li><a href='" + data.url + "' target='_blank'><img src='" + data.url + "' width='80' height='50' /></a></li>");
+                                form.find(".hiModelHousesPic ul").append("<li><a href='" + data.url + "' target='_blank'><img src='" + data.url + "' width='80' height='50' /></a></li>");
                             });
-                            form.find("[name=hiPeripheralMatchingPic]").val(imgArray.join(","));
+                            form.find("[name=hiModelHousesPic]").val(imgArray.join(","));
                             editor.hideDialog();
                         }
                     });
