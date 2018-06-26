@@ -5,7 +5,6 @@
 
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/swiper.jquery.min.js" type="text/javascript"></script>
-    <script src="js/commen.js" type="text/javascript"></script>
 
     <link rel="stylesheet" href="lib/photoswipe/photoswipe.css">
 
@@ -28,13 +27,15 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>东鼎名人府邸|东鼎名人府邸楼盘-东鼎名人府邸房价-东鼎名人府邸户型</title>
+    <title>碧桂园--海上传奇</title>
     <meta name="Keywords" content="">
-    <meta name="Description" content="东鼎名人府邸|东鼎名人府邸楼盘-东鼎名人府邸房价-东鼎名人府邸户型售楼处通知：（太湖经济圈、上海经济圈、杭州经济圈）长三角经济圈的中心位!享最低购房折扣，当天签约还送3年物业费！最低折扣 : 通过本网">
+    <meta name="Description" content="碧桂园海上传奇|碧桂园海上传奇楼盘-碧桂园海上传奇房价-碧桂园海上传奇户型售楼处通知：（太湖经济圈、上海经济圈、杭州经济圈）长三角经济圈的中心位!享最低购房折扣，当天签约还送3年物业费！最低折扣 : 通过本网">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/style.compact.css">
     <link rel="stylesheet" href="css/page-public.css">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         .pswp__button pswp__button--share {
             display: none !important;
@@ -165,36 +166,39 @@
             font-size: 18px;
             text-align: left;
         }
+
+        .item__content p {
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 
-<!-- =========================描述换行问题-->
 <body>
+
+    <div id="vue-mont">
         <!-- 首页大图 start -->
         <div class="swiper-container swiper_banner"  id="swiper1">
             <div class="swiper-wrapper" >
                 <!-- 1. TODO修改 hiLogo 三张图片 -->
-                <div class="swiper-slide " >
-                    <div class="swiper_banner__pic" style="background-image: url('img/201805211300393608.jpg')"></div>
-                </div>
-                <div class="swiper-slide " >
-                    <div class="swiper_banner__pic" style="background-image: url('img/201805211300393608.jpg')"></div>
-                </div>
-                <div class="swiper-slide ">
-                    <div class="swiper_banner__pic" style="background-image: url('img/201805211300393608.jpg')"></div>
+                <div class="swiper-slide " v-for="item in imgList7">
+                    <div class="swiper_banner__pic" :style="{backgroundImage: 'url(' + item +')'}"></div>
                 </div>
             </div>
         </div>
-
         <!-- 首页大图 end -->
-    <div id="vue-mont">
+        <div class="row" v-for="item in titles" style="color:#fff;">
+            <a style="margin-left: 40px;height: 40px;line-height: 40px;"  :href="item.m">
+                {{item.title}}
+            </a>
+        </div>
+
         <div class="info">
             <p><br></p>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-            <title>东鼎名人府邸|东鼎名人府邸楼盘-东鼎名人府邸房价-东鼎名人府邸户型</title>
-            <meta name="keywords" content="嘉善东鼎名人府,东鼎名人府邸最新房价,东鼎名人府邸户型">
-            <meta name="description" content="东鼎名人府邸楼盘详情-房价走势-商业贷款-公积金贷款,东鼎名人府邸户型,周边配套,产权年限,物业费,东鼎名人府邸售楼电话4001188176">
+            <title>碧桂园海上传奇|碧桂园海上传奇楼盘-碧桂园海上传奇房价-碧桂园海上传奇户型</title>
+            <meta name="keywords" content="碧桂园海上传奇,碧桂园海上传奇最新房价,碧桂园海上传奇户型">
+            <meta name="description" content="碧桂园海上传奇,楼盘详情-房价走势-商业贷款-公积金贷款,碧桂园海上传奇,户型,周边配套,产权年限,物业费,碧桂园海上传奇售楼电话4001188176">
             <link rel="stylesheet" href="css/files/swiper.min.css">
             <link rel="stylesheet" href="css/files/style.compact.css">
             <link rel="stylesheet" href="css/files/main.css">
@@ -203,8 +207,8 @@
                     <div class="inner text-center">
                         <h2 class="about__tit">
                             <p>售楼处通知：</p>
-                            <p>地铁口高品质住宅---认筹开抢中！</p>
-                            <div>现在致电预约领取碧桂园售楼部购房红包！
+                            <p>地铁口高品质住宅---火爆认购中！</p>
+                            <div>现在致电预约领取售楼部购房红包！
                                 享最低购房折扣，当天签约还送3年物业费！</div>
                         </h2>
                         <div class="about__txt">
@@ -225,6 +229,7 @@
                 <div class="container-fluid">
                     <div class="inner">
                         <h2 class="index__tit">{{detail.hiName}}</h2>
+                        <a name="m1"></a>
                         <div class="index__bd">
                             <div class="intro__content">
                                 <div class="intro__txt">
@@ -247,6 +252,7 @@
                                         <p>楼盘位置：{{detail.hiAddress}}</p>
                                     </div>
                                 </div>
+                                <br/>
                                 <div class="intro__picbox"><img class="&amp;classname&amp;" :src="detail.hiShowPic"></div>
                             </div>
                         </div>
@@ -258,55 +264,86 @@
             <div class="mod_index mod_index--project">
                 <div class="container-fluid">
                     <div class="inner">
+                        <a name="m2"></a>
                         <h2 class="index__tit">项目特色</h2>
-                        <div class="index__bd">
+                        <div class="index__bd" style=" padding: 20px; color: #06324c; background-color: #e6daaa; font-weight: bold;">
                             <div class="item__content">
                                 <div class="item__txt">
                                     <p>{{detail.hiProjectFeaturesDesc }}</p>
                                 </div>
                                 <div class="item__picbox">
-                                    <!-- ======================修改图片 TODO-->
-                                    <img class="&amp;classname&amp;" :src="detail.hiProjectFeaturesPic"></div>
+                                    <div class="swiper-container" id="swiper_7">
+                                        <!--room__content-->
+                                        <div class="swiper-wrapper" @click="showPhotoSwipe(6)">
+                                            <div class=" swiper-slide" v-for="item in imgList6">
+                                                <!--room__item1-->
+                                                <img class="swiper_banner__pic" :src="item">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-
             <!-- 楼盘优势-->
-            <div class="mod_index mod_index--project">
+            <div class="mod_index mod_index--projec">
                 <div class="container-fluid">
                     <div class="inner">
+                        <a name="m3"></a>
                         <h2 class="index__tit">楼盘优势</h2>
-                        <div class="index__bd">
+                        <div class="index__bd" style=" padding: 20px; color: #06324c; background-color: #e6daaa; font-weight: bold;">
                             <div class="item__content">
                                 <div class="item__txt">
                                     <p>{{detail.hiSuperiorityDesc }}</p>
                                 </div>
                                 <div class="item__picbox">
                                     <!-- ====================修改图片 TODO-->
-                                    <img class="&amp;classname&amp;" :src="detail.hiSuperiorityPic"></div>
+                                    <!--<img class="&amp;classname&amp;" :src="detail.hiSuperiorityPic"></div>-->
+                                    <div class="swiper-container" id="swiper_5">
+                                        <!--room__content-->
+                                        <div class="swiper-wrapper" @click="showPhotoSwipe(4)">
+                                            <div class=" swiper-slide" v-for="item in imgList4">
+                                                <!--room__item1-->
+                                                <img class="swiper_banner__pic" :src="item">
+                                                <!--<div class="swiper_banner__pic" :style="getImageUrl(item)"></div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-
             <!-- 区域显著-->
             <div class="mod_index mod_index--project">
                 <div class="container-fluid">
                     <div class="inner">
+                        <a name="m4"></a>
                         <h2 class="index__tit">区域显著</h2>
-                        <div class="index__bd">
+                        <div class="index__bd"  style=" padding: 20px; color: #06324c; background-color: #e6daaa; font-weight: bold;">
                             <div class="item__content">
                                 <div class="item__txt">
                                     <p>{{detail.hiRegionalSignificanceDesc }}</p>
                                 </div>
                                 <div class="item__picbox">
                                     <!-- ====================修改图片 TODO-->
-                                    <img class="&amp;classname&amp;" :src="detail.hiRegionalSignificancePic"></div>
+                                    <!--<img class="&amp;classname&amp;" :src="detail.hiRegionalSignificancePic"></div>-->
+                                    <div class="swiper-container" id="swiper_4">
+                                        <!--room__content-->
+                                        <div class="swiper-wrapper" @click="showPhotoSwipe(3)">
+                                            <div class=" swiper-slide" v-for="item in imgList3">
+                                                <!--room__item1-->
+                                                <img class="swiper_banner__pic" :src="item">
+                                                <!--<div class="swiper_banner__pic" :style="getImageUrl(item)"></div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -317,15 +354,28 @@
             <div class="mod_index mod_index--project">
                 <div class="container-fluid">
                     <div class="inner">
+                        <a name="m5"></a>
                         <h2 class="index__tit">周边配套</h2>
-                        <div class="index__bd">
+                        <div class="index__bd" style="padding: 20px; color: #06324c; background-color: #e6daaa; font-weight: bold;">
                             <div class="item__content">
                                 <div class="item__txt">
                                     <p>{{detail.hiPeripheralMatchingDesc }}</p>
                                 </div>
                                 <div class="item__picbox">
                                     <!-- ====================修改图片 TODO-->
-                                    <img class="&amp;classname&amp;" :src="detail.hiPeripheralMatchingPic"></div>
+                                    <!--<img class="&amp;classname&amp;" :src="detail.hiPeripheralMatchingPic">-->
+                                    <!--index__bd-->
+                                    <div class="swiper-container" id="swiper_3">
+                                        <!--room__content-->
+                                        <div class="swiper-wrapper" @click="showPhotoSwipe(2)">
+                                            <div class=" swiper-slide" v-for="item in imgList2">
+                                                <!--room__item1-->
+                                                <img class="swiper_banner__pic" :src="item">
+                                                <!--<div class="swiper_banner__pic" :style="getImageUrl(item)"></div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -336,6 +386,7 @@
             <div class="mod_index mod_index--room">
                 <div class="container-fluid">
                     <div class="inner">
+                        <a name="m6"></a>
                         <h2 class="index__tit">户型介绍</h2>
                         <!--index__bd-->
                         <div class="swiper-container" id="swiper2">
@@ -356,8 +407,9 @@
             <div class="mod_index mod_index--feature">
                 <div class="container-fluid">
                     <div class="inner">
+                        <a name="m7"></a>
                         <h2 class="index__tit">样板房展示</h2>
-                        <div class="index__bd">
+                        <div class="index__bd" style=" padding: 20px; color: #06324c; background-color: #e6daaa; font-weight: bold;">
                             <div class="feature__content">
                                 <div class="feature__item">
                                     <div class="feature__txt">
@@ -365,16 +417,24 @@
                                     </div>
                                     <div class="feature__picbox">
                                         <!-- ====================修改图片 TODO-->
-                                        <img class="&amp;classname&amp;" :src="detail.hiModelHousesPic"></div>
+                                        <!--<img class="&amp;classname&amp;" :src="detail.hiModelHousesPic"></div>-->
+                                        <div class="swiper-container" id="swiper_6">
+                                            <!--room__content-->
+                                            <div class="swiper-wrapper" @click="showPhotoSwipe(5)">
+                                                <div class=" swiper-slide" v-for="item in imgList5">
+                                                    <!--room__item1-->
+                                                    <img class="swiper_banner__pic" :src="item">
+                                                    <!--<div class="swiper_banner__pic" :style="getImageUrl(item)"></div>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-        </div>
 
 
         <style>
@@ -394,7 +454,7 @@
                 <div class="inner">
                     <h2 class="hotline__tit">{{detail.hiReminderContent}}</h2>
                     <p class="hotline__number ">售楼热线：<strong class="num">{{detail.hiHotLine}}</strong></p>
-                    <p><a href="http://www.miitbeian.gov.cn" target="_blank"> 沪ICP备18014511号</a></p>
+                    <p><a href="http://www.miitbeian.gov.cn" target="_blank"> 沪ICP备18023790号</a></p>
                 </div>
             </div>
         </div>
@@ -482,7 +542,35 @@
                     el: '#vue-mont',
                     data: {
                         detail:{},
-                        imgList:[]
+                        imgList:[],
+                        imgList2:[],
+                        imgList3:[],
+                        imgList4:[],
+                        imgList5:[],
+                        imgList6:[],
+                        imgList7:[],
+                        titles:[{
+                            title:'楼盘介绍',
+                            m:'#m1'
+                        },{
+                            title:'项目特色',
+                            m:'#m2'
+                        },{
+                            title:'楼盘优势',
+                            m:'#m3'
+                        },{
+                            title:'区域显著',
+                            m:'#m4'
+                        },{
+                            title:'周边配套',
+                            m:'#m5'
+                        },{
+                            title:'户型介绍',
+                            m:'#m6'
+                        },{
+                            title:'样板房展示',
+                            m:'#m7'
+                        }]
                     },
                     created:function(){
                         var self = this;
@@ -495,7 +583,12 @@
                             success:function(data){
                                 self.detail = data.data;
                                 self.imgList = self.detail.hiHouseTypePic.split(',')
-                                console.log(self.imgList)
+                                self.imgList2 = self.detail.hiPeripheralMatchingPic.split(',')
+                                self.imgList3 = self.detail.hiRegionalSignificancePic.split(',')
+                                self.imgList4 = self.detail.hiSuperiorityPic.split(',')
+                                self.imgList5 = self.detail.hiModelHousesPic.split(',')
+                                self.imgList6 = self.detail.hiProjectFeaturesPic.split(',')
+                                self.imgList7 = self.detail.hiLogo.split(',')
                             },
                             error:function (data) {
                                 console.log(data)
@@ -504,7 +597,12 @@
                     },
 
                     mounted:function(){
-                        this.$nextTick(function(){
+
+                    },
+
+                    updated:function(){
+                        this.$nextTick(function () {
+
                             var swiperBanner = new Swiper("#swiper1", {
                                 // slidesPerView: 1,
                                 // spaceBetween: 0,
@@ -516,13 +614,6 @@
                                 // speed: 1500
                             });
 
-
-                        })
-
-                    },
-
-                    updated:function(){
-                        this.$nextTick(function () {
                             var roomontent = new Swiper("#swiper2", {
                                 slidesPerView: 1,
                                 initialSlide:2,
@@ -535,6 +626,18 @@
                                 // autoplay: false,
                                 // autoplayDisableOnInteraction: false,
                             });
+
+                            for (var i = 3;i< 8;i++){
+                                var name = '#swiper_' + i;
+                                new Swiper(name, {
+                                    slidesPerView: 1,
+                                    initialSlide:2,
+                                    autoplay: 5000,//可选选项，自动滑动
+                                    autoHeight:true,
+                                    loop: true,
+                                    width:320,
+                                });
+                            }
                         })
                     },
 
@@ -544,14 +647,72 @@
                                 backgroundImage:'url('+ item +')'
                             }
                         },
-                        showPhotoSwipe:function () {
+                        showPhotoSwipe:function (index) {
+                            index = index || '';
                             // build items array
-                            var items = this.imgList.map(function(item){
+                            var images = this['imgList'+ index];
+
+                            var items = images.map(function(item){
+
+                                if(index == 2){
+                                    return {
+                                        src:item,
+                                        w:600,
+                                        h:400,
+                                        title:'周边配套'
+                                    }
+                                }
+
+                                if(index == 3){
+                                    return {
+                                        src:item,
+                                        w:600,
+                                        h:400,
+                                        title:'区域显著'
+                                    }
+                                }
+
+                                if(index == 4){
+                                    return {
+                                        src:item,
+                                        w:600,
+                                        h:400,
+                                        title:'楼盘优势'
+                                    }
+                                }
+
+                                if(index == 5){
+                                    return {
+                                        src:item,
+                                        w:600,
+                                        h:400,
+                                        title:'样板房展示'
+                                    }
+                                }
+
+                                if(index == 6){
+                                    return {
+                                        src:item,
+                                        w:600,
+                                        h:400,
+                                        title:'项目特色'
+                                    }
+                                }
+
+                                if(index == 7){
+                                    return {
+                                        src:item,
+                                        w:600,
+                                        h:400,
+                                        title:'LOGO'
+                                    }
+                                }
+
                                 return {
                                     src:item,
                                     w:600,
                                     h:400,
-                                    title:'东鼎名人府邸|东鼎名人府邸楼盘-东鼎名人府邸房价-东鼎名人府邸户型'
+                                    title:'户型介绍'
                                 }
                             })
                             this.initPhotoSwipe(items);
@@ -582,8 +743,9 @@
 
 
     <!-- 在线聊天功能实现 -->
-    <script src="https://qiyukf.com/script/e7d9b04fcc81f3795804d07c174698e1.js"></script>
-
+        <script src="https://qiyukf.com/script/e7d9b04fcc81f3795804d07c174698e1.js"></script>
+        <script src="js/commen.js" type="text/javascript"></script>
+    </div>
 </body>
 
 </html>

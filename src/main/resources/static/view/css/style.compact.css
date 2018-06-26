@@ -108,7 +108,7 @@ img,video {max-width:100%;}
 .inner--about {text-align:center;}
 .about__tit {color:#ffde6c;font-size:48px;}
 .about__txt {font-size:24px;}
-.index__tit {margin-bottom:20px;text-align:center;color:#ffe897;background-image:url("../images/tit_bg.png");background-repeat:no-repeat;background-position:center;font-size:24px;font-weight:bold;}
+.index__tit {margin-bottom:20px;text-align:center;color:#ffe897;background-image:url("../img/tit_bg.png");background-repeat:no-repeat;background-position:center;font-size:24px;font-weight:bold;}
 .index__bd {padding:20px;color:#06324c;background-color:#e6daaa;}
 .intro__txt,.intro__picbox {display:table-cell;vertical-align:top;}
 .intro__txt {width:40%;padding-right:20px;}
@@ -129,7 +129,7 @@ img,video {max-width:100%;}
 .room__item {display:inline-block;width:100%;vertical-align:bottom;font-size:16px;}
 .item__txt {margin-bottom:20px;text-align:center;color:#06324c;font-size:20px;font-weight:bold;}
 .mod_index--hotline {margin-bottom:150px;}
-.mod_index--hotline .inner {text-align:center;color:#f2d666;padding-top:30px;background-image:url("../images/hot-line.png")/*tpa=http://www.linhuxinfang.com/img/hot-line.png*/;background-position:left top;background-repeat:no-repeat;}
+.mod_index--hotline .inner {text-align:center;color:#f2d666;padding-top:30px;background-image:url("../img/hot-line.png")/*tpa=http://www.linhuxinfang.com/img/hot-line.png*/;background-position:left top;background-repeat:no-repeat;}
 .hotline__tit {font-size:36px;font-weight:bold;}
 .hotline__number {font-size:30px;font-style:italic;}
 .hotline__number .num {font-size:48px;}

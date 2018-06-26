@@ -3,39 +3,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>网站首页-上海升华房地产经纪有限公司</title>
-    <meta name="keywords" content="网站首页-上海升华房地产经纪有限公司"/>
-    <meta name="description" content="网站首页-上海升华房地产经纪有限公司"/>
+    <title>网站首页-上海德旭房地产经纪有限公司</title>
+    <meta name="keywords" content="网站首页-上海德旭房地产经纪有限公司"/>
+    <meta name="description" content="网站首页-上海德旭房地产经纪有限公司"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/css.css"/>
-    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <link rel="stylesheet" href="/static/css/css.css"/>
+    <link rel="stylesheet" href="/static/css/swiper.min.css"/>
     <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
-    <script type="text/javascript" src="js/jquery1.42.min.js"></script>
-    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery1.42.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="/static/js/swiper.min.js"></script>
 
 </head>
 <body>
 <div class="contain">
     <Div class="main">
         <div class="head">
-            <img src="images/tel.jpg" style="width:260px;">
+            <img src="/static/images/tel.jpg" style="width:260px;">
         </div>
         <div class="clear"></div>
         <div class="nav">
             <div class="nav-img">
-                <img src="images/logo.jpg" style="margin-top:-20px;">
+                <img src="/static/images/logo2.jpg" style="margin-top:-20px;">
+
             </div>
+
+            <a name="hIndex"></a>
             <div class="nav-ul">
                 <ul>
-                    <Li><a>网站首页</a></Li>
-                    <Li><a>公司简介</a></Li>
-                    <Li><a>房源展示</a></Li>
-                    <Li><a>新闻动态</a></Li>
-                    <li style="margin-right:0"><a>联系我们</a></li>
+                    <Li><a href="#hIndex">网站首页</a></Li>
+                    <Li><a href ="#hIntroduce">公司简介</a></Li>
+                    <Li><a href="#hShow">房源展示</a></Li>
+                    <li style="margin-right:0"><a href="#hContact">联系我们</a></li>
                 </ul>
             </div>
         </div>
@@ -45,9 +47,9 @@
     <div style="clear:both"></div>
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/banner.jpg" width="100%"></div>
-            <div class="swiper-slide"><img src="images/banner.jpg" width="100%"></div>
-            <div class="swiper-slide"><img src="images/banner.jpg" width="100%"></div>
+            <div class="swiper-slide"><img src="/static/images/banner.jpg" width="100%"></div>
+            <div class="swiper-slide"><img src="/static/images/banner.jpg" width="100%"></div>
+            <div class="swiper-slide"><img src="/static/images/banner.jpg" width="100%"></div>
         </div>
 
         <!-- 底部分页标签 -->
@@ -74,6 +76,7 @@
 <div class="maininfo">
     <div class="contain pro-se">
         <div class="main">
+            <a name="hShow"></a>
             <div class="pro-head">
                 <h1>房源展示</h1>
                 <h5>Product display</h5>
@@ -85,22 +88,23 @@
             </div>
         </div>
     </div>
-    <div class="contain"><img src="images/home.png"></div>
+    <div class="contain"><img src="/static/images/home.png"></div>
     <div class="contain">
         <div class="main">
+            <a name="hIntroduce"></a>
             <div class="pro-head">
                 <h1>公司简介</h1>
                 <h5>Company profile</h5>
             </div>
-            <div class="js-left"><img src="uploadpic/2018511395887904099.jpg"></div>
+            <div class="js-left"><img src="/static/uploadpic/2018511395887904099.jpg"></div>
             <div class="js-right">
                 <p>
-                    上海升华房地产经纪有限公司成立于2016年6月3日
+                    上海德旭房地产经纪有限公司
                 </p>
                 <p>
                     公司业务范围：
                 </p>
-                ️承接一手房代理、分销，<br/>
+                ️承接一手房 碧桂园——海上传奇代理、分销，<br/>
                 ️二手房买卖、代办流程，<br/>
                 ️厂房、商铺租赁及买卖，<br/>
                 ️拍卖房购买，️房屋托管业务，<br/>
@@ -115,10 +119,10 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-3" v-for="item in dataList">
-                    <a class="index_case_block" :href="'view/detail.html?id=' + item.id" target="_blank">
+                    <a class="index_case_block" :href="'/static/view/detail.html?id=' + item.id" target="_blank">
                         <div class="cp_img">
                             <div class="cp_img_top"></div>
-                            <img class="img-position-absolute" :src="item.hiSuperiorityPic"/>
+                            <img class="img-position-absolute" :src="item.hiShowPic"/>
                         </div>
                         <div class="cp_p">{{item.hiName}}</div>
                         <div class="cp_sp">楼盘位置：{{item.hiAddress}}</div>
@@ -131,24 +135,25 @@
 
     <div class="contain foot-se">
         <div class="main">
+            <a name="hContact"></a>
             <div class="foot">
                 <dl>
-                    <dt><img src="images/foot1.jpg"></dt>
+                    <dt><img src="/static/images/foot1.jpg"></dt>
                     <dd>工作时间</dd>
                     <dd>9:00-19:00</dd>
                 </dl>
                 <dl>
-                    <dt><img src="images/foot2.jpg"></dt>
+                    <dt><img src="/static/images/foot2.jpg"></dt>
                     <dd>预约看房</dd>
                     <dd>预约成功线下看房</dd>
                 </dl>
                 <dl>
-                    <dt><img src="images/foot3.jpg"></dt>
+                    <dt><img src="/static/images/foot3.jpg"></dt>
                     <dd>联系我们</dd>
-                    <dd>15901759393</dd>
+                    <dd> 13917769238</dd>
                 </dl>
                 <dl style="margin-right:0">
-                    <dt><img src="images/foot4.jpg"></dt>
+                    <dt><img src="/static/images/foot4.jpg"></dt>
                     <dd>免费咨询</dd>
                     <dd>有任何问题请联系我们</dd>
                 </dl>
@@ -158,8 +163,8 @@
     </div>
 
     <div class="footer">
-        <div class="main foot"><a>网站首页</a>　｜　<a>公司简介</a>　｜　<a>　房源展示</a>　｜　<a>新闻动态</a>　｜　<a>联系我们</a><br>
-            版权所有&copy;2018 上海升华房地产经纪有限公司 <a target="_blank"> 沪ICP备18016884号-1</a> <a href="admin/login.asp"
+        <div class="main foot"><a href="#hIndex">网站首页</a>　｜　<a href ="#hIntroduce">公司简介</a>　｜　<a href="#hShow">　房源展示</a>　　｜　<a href="#hContact">联系我们</a><br>
+            版权所有&copy;2018 上海德旭房地产经纪有限公司 <a target="_blank"> 沪ICP备18023790号</a> <a href="user/login.do"
                                                                                      target="_blank" class="hidden-xs">【管理入口】</a>
         </div>
     </div>
@@ -181,7 +186,7 @@
                         dataType: 'json',
                         data: {
                             pageSize: 50,
-                            pageNo: 1,
+                            pageNo: 1
                         },
                         type: 'GET',
                         success: function (data) {
