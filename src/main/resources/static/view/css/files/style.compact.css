@@ -220,7 +220,7 @@ img, video { max-width: 100%; }
 
 .intro__dt, .intro__dd { display: inline; font-weight: bold; }
 
-.feature__item { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+/*.feature__item { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }*/
 
 .feature__item + .feature__item { margin-top: 20px; }
 

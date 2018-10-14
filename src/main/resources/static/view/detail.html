@@ -1,7 +1,7 @@
 <html>
 <head>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
 
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/swiper.jquery.min.js" type="text/javascript"></script>
@@ -27,15 +27,14 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>碧桂园--海上传奇</title>
+    <title></title>
     <meta name="Keywords" content="">
-    <meta name="Description" content="碧桂园海上传奇|碧桂园海上传奇楼盘-碧桂园海上传奇房价-碧桂园海上传奇户型售楼处通知：（太湖经济圈、上海经济圈、杭州经济圈）长三角经济圈的中心位!享最低购房折扣，当天签约还送3年物业费！最低折扣 : 通过本网">
+    <meta name="Description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="css/swiper.min.css">
-    <link rel="stylesheet" href="css/style.compact.css">
     <link rel="stylesheet" href="css/page-public.css">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         .pswp__button pswp__button--share {
             display: none !important;
@@ -171,6 +170,24 @@
             white-space: pre-wrap;
         }
     </style>
+
+    <script>
+
+        var _hmt = _hmt || [];
+
+        (function() {
+
+            var hm = document.createElement("script");
+
+            hm.src = "https://hm.baidu.com/hm.js?0eb43ffe9bff00972ad63bd66401bc8a";
+
+            var s = document.getElementsByTagName("script")[0];
+
+            s.parentNode.insertBefore(hm, s);
+
+        })();
+
+    </script>
 </head>
 
 <body>
@@ -186,19 +203,14 @@
             </div>
         </div>
         <!-- 首页大图 end -->
-        <div class="row" v-for="item in titles" style="color:#fff;">
-            <a style="margin-left: 40px;height: 40px;line-height: 40px;"  :href="item.m">
+        <div class="row" style="color:#fff;">
+            <a v-for="item in titles"  style="margin-left: 40px;height: 40px;line-height: 40px;"  :href="item.m">
                 {{item.title}}
             </a>
         </div>
 
         <div class="info">
             <p><br></p>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-            <title>碧桂园海上传奇|碧桂园海上传奇楼盘-碧桂园海上传奇房价-碧桂园海上传奇户型</title>
-            <meta name="keywords" content="碧桂园海上传奇,碧桂园海上传奇最新房价,碧桂园海上传奇户型">
-            <meta name="description" content="碧桂园海上传奇,楼盘详情-房价走势-商业贷款-公积金贷款,碧桂园海上传奇,户型,周边配套,产权年限,物业费,碧桂园海上传奇售楼电话4001188176">
             <link rel="stylesheet" href="css/files/swiper.min.css">
             <link rel="stylesheet" href="css/files/style.compact.css">
             <link rel="stylesheet" href="css/files/main.css">
@@ -209,7 +221,7 @@
                             <p>售楼处通知：</p>
                             <p>地铁口高品质住宅---火爆认购中！</p>
                             <div>现在致电预约领取售楼部购房红包！
-                                享最低购房折扣，当天签约还送3年物业费！</div>
+                                享最低购房折扣！</div>
                         </h2>
                         <div class="about__txt">
                             <p>最低折扣 : 通过本网预约享受开发商最低购房优惠折扣；  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br></p>
@@ -582,6 +594,10 @@
                             },
                             success:function(data){
                                 self.detail = data.data;
+                                var title = data.data.hiName
+                                self.setTitle(title);
+                                var content = title + '|'+title+'楼盘'+title+'房价-'+title+'户型售楼处通知：（太湖经济圈、上海经济圈、杭州经济圈）长三角经济圈的中心位!享最低购房折扣，当天签约还送3年物业费！最低折扣 : 通过本网';
+                                $('meta[name=Description]').attr('content',title);
                                 self.imgList = self.detail.hiHouseTypePic.split(',')
                                 self.imgList2 = self.detail.hiPeripheralMatchingPic.split(',')
                                 self.imgList3 = self.detail.hiRegionalSignificancePic.split(',')
@@ -647,6 +663,11 @@
                                 backgroundImage:'url('+ item +')'
                             }
                         },
+
+                        setTitle:function(title){
+                            document.querySelector('title').innerHTML = title
+                        },
+
                         showPhotoSwipe:function (index) {
                             index = index || '';
                             // build items array
@@ -743,7 +764,6 @@
 
 
     <!-- 在线聊天功能实现 -->
-        <script src="https://qiyukf.com/script/e7d9b04fcc81f3795804d07c174698e1.js"></script>
         <script src="js/commen.js" type="text/javascript"></script>
     </div>
 </body>
