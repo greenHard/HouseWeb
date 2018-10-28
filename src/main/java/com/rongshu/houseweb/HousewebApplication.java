@@ -3,17 +3,17 @@ package com.rongshu.houseweb;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class HousewebApplication extends SpringBootServletInitializer{
+public class HousewebApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HousewebApplication.class, args);
     }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(HousewebApplication.class);
-    }
+    //@Override
+    //protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+    //    return builder.sources(HousewebApplication.class);
+    //}
 }

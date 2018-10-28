@@ -42,3 +42,28 @@ CREATE TABLE house_info  (
   PRIMARY KEY (id)
 );
 
+
+
+CREATE TABLE new_house_info  (
+  ID bigint(20) NOT NULL AUTO_INCREMENT,
+  hi_name varchar(200)  COMMENT '楼盘名称',
+  hi_logo varchar(200)  COMMENT '楼盘logo',
+  hi_superiority_pic varchar(1000)  COMMENT '项目描述图片',
+  hi_superiority_desc varchar(1000)  COMMENT '项目描述简介',
+  hi_surrounding_enviroment_pic varchar(1000)  COMMENT '周边环境图片',
+  hi_surrounding_enviroment_desc varchar(1000)  COMMENT '周边环境描述',
+  hi_traffic_programme_pic varchar(1000)  COMMENT '交通规划图片',
+  hi_traffic_programme_desc varchar(1000)  COMMENT '交通规划描述',
+  hi_example_house_type_pic varchar(1000)  COMMENT '样板户型图片',
+  hi_example_house_type_desc varchar(1000)  COMMENT '样板户型描述',
+  hi_investment_potential_logo varchar(1000)  COMMENT '投资潜力logo',
+  hi_investment_potential_title varchar(1000)  COMMENT '投资潜力标题',
+  hi_investment_potential_desc varchar(1000)  COMMENT '投资潜力描述',
+  hi_interval_pic varchar(200)  COMMENT '间隔图片',
+  hi_hot_line varchar(200)  COMMENT '楼盘热线',
+  hi_status int(1) COMMENT '楼盘状态 默认值为1，可选值：1正常，2下架，3删除',
+  hi_update_date timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  hi_create_date datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (ID)
+) ;
+

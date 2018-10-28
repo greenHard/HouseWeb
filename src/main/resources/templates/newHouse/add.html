@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div style="padding:10px 10px 10px 10px">
+    <form id="newHouseAddForm" class="newHouseForm" method="post">
+        <table cellpadding="5">
+            <tr>
+                <td>楼盘名称:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiName" data-options="required:true"
+                           style="width: 150px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘Logo图片:</td>
+                <td>
+                    <!-- 只能上传一张图片-->
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiLogoNewFileUpload">上传楼盘Logo图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiLogo"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>项目优势图片:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiSuperiorityPicNewFileUpload">上传项目优势图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiSuperiorityPic"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>项目优势说明:</td>
+                <td>
+                    <textarea th:name="hiSuperiorityDesc" cols="60" rows="5" warp="virtual"
+                              class="easyui-validatebox" required="true"></textarea>
+                    <span><font style="color: red">和上面的图片一一对应, 请使用||进行分割</font></span>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>周边环境图片:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiSurroundingEnviromentPicFileUpload">上传周边环境图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiSurroundingEnviromentPic"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>周边环境说明:</td>
+                <td>
+                    <textarea th:name="hiSurroundingEnviromentDesc" cols="60" rows="5" warp="virtual"
+                              class="easyui-validatebox" required="true"></textarea>
+                    <span><font style="color: red">和上面的图片一一对应, 请使用||进行分割</font></span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>交通规划图片:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiTrafficProgrammePicFileUpload">上传交通规划图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiTrafficProgrammePic"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>交通规划说明:</td>
+                <td>
+                    <textarea th:name="hiTrafficProgrammeDesc" cols="60" rows="5" warp="virtual"
+                              class="easyui-validatebox" required="true"></textarea>
+                    <span><font style="color: red">和上面的图片一一对应, 请使用||进行分割</font></span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>样板户型图片:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiExampleHouseTypePicFileUpload">上传样板户型图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiExampleHouseTypePic"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>样板户型说明:</td>
+                <td>
+                    <textarea th:name="hiExampleHouseTypeDesc" cols="60" rows="5" warp="virtual"
+                              class="easyui-validatebox" required="true"></textarea>
+                    <span><font style="color: red">和上面的图片一一对应, 请使用||进行分割</font></span>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>投资潜力logo:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiInvestmentPotentialLogoFileUpload">上传投资潜力logo</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiInvestmentPotentialLogo"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>投资潜力标题:</td>
+                <td>
+                    <textarea th:name="hiInvestmentPotentialTitle" cols="60" rows="5" warp="virtual"
+                              class="easyui-validatebox" required="true"></textarea>
+                    <span><font style="color: red">和上面的图片一一对应, 请使用||进行分割</font></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>投资潜力描述:</td>
+                <td>
+                    <textarea th:name="hiInvestmentPotentialDesc" cols="60" rows="5" warp="virtual"
+                              class="easyui-validatebox" required="true"></textarea>
+                    <span><font style="color: red">和上面的图片一 一对应, 请使用"||"进行分割</font></span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>间隔图片:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiIntervalPicFileUpload">间隔图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiIntervalPic"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>楼盘热线:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" th:name="hiHotLine" data-options="required:true"
+                           style="width: 150px;"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div style="padding:5px">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
+    </div>
+</div>
+<script type="text/javascript">
+
+    // 初始化
+    var itemAddEditor;
+    $(function () {
+        // 和form下的desc组件绑定
+        itemAddEditor = KindEditorUtil.createEditor("#newHouseAddForm [name=desc]");
+        KindEditorUtil.init({
+            fun: function (node) {
+                KindEditorUtil.changeItemParam(node, "newHouseAddForm");
+            }
+        });
+    });
+
+    function submitForm() {
+        // 表单校验
+        if (!$('#newHouseAddForm').form('validate')) {
+            $.messager.alert('提示', '表单还未填写完成!');
+            return;
+        }
+
+        $.post("/newHouse/save", $("#newHouseAddForm").serialize(), function (data) {
+            if (data.status == 200) {
+                $.messager.alert('提示', '新增楼盘成功!');
+            } else {
+                $.messager.alert('提示', data.msg);
+            }
+        });
+    }
+
+    function clearForm() {
+        $('#newHouseAddForm').form('reset');
+        itemAddEditor.html('');
+    }
+</script>
+</body>
+</html>
+
