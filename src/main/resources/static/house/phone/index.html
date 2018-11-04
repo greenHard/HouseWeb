@@ -1,0 +1,585 @@
+<html style="font-size: 50px;">
+<head>
+    <meta charset="utf-8">
+    <!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,initial-scale=1.0, maximum-scale=1.0,user-scalable=0">
+    <!--[if IE 8]>
+    <meta http-equiv="refresh" content="2; url=index_ie8.html">
+    <![endif]-->
+    <title></title>
+    <meta name="keywords" content="绿地海湾">
+    <meta name="description" content="绿地海湾">
+    <link rel="stylesheet" type="text/css" href="Public/Home/css/style.css">
+    <script src="https://hm.baidu.com/hm.js?88e9d524383fdf9851bf433ec610d4cc"></script>
+    <script type="text/javascript" src="Public/Home/js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="Public/Home/js/rem.js"></script>
+    <script src="Public/Home/js/jquery.lazyload.min.js" type="text/javascript"></script>
+    <script src="Public/Home/lib/es5-sham.min.js"></script>
+    <script src="Public/Home/lib/html5shiv.min.js"></script>
+    <script src="Public/Home/lib/json2.js"></script>
+    <script src="Public/Home/js/vue.2.5.16.min.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+
+            hm.src = "https://hm.baidu.com/hm.js?0eb43ffe9bff00972ad63bd66401bc8a";
+
+            var s = document.getElementsByTagName("script")[0];
+
+            s.parentNode.insertBefore(hm, s);
+
+        })();
+    </script>
+</head>
+<body style="">
+<div id="ks_ol_chatWin" class="ks_ol_comm_div"></div>
+<div id="_ks_ol_inviteWin" class="ks_ol_comm_div" style="display: none; width: auto; z-index: 2147483647; left: 0px; top: 50%; position: fixed !important; margin-top: -100px !important;">
+    <div id="_ks_ol_inviteWin_fl"><div style="BACKGROUND-IMAGE: url(//file.kuaishang.cn/images/code2012/invite/52.png); POSITION: relative; WIDTH: 250px; HEIGHT: 119px" id="divbg" class="seldiv" action="frame" name="背景图片">
+        <div id="div19" style="z-index: 0; position: absolute; width: 90px; height: 28px; top: 78px; left: 147px; font-size: 18px; color: rgb(255, 255, 255); text-align: center; line-height: 26px; cursor: pointer;" name="在线咨询按钮" orig_x="169" orig_y="124" orig_index="0">
+            <strong>点击咨询</strong>
+        </div>
+        <div style="position: absolute; width: 23px; height: 23px; top: 5px; left: 215px; cursor: pointer; line-height: 0px;" id="div23" class="seldiv" name="关闭按钮" orig_x="316" orig_y="7" orig_index="0"></div>
+    </div></div></div><div id="ks_ol_floatWin" class="ks_ol_comm_div"></div>
+<div class="box" id="vue-init" style="display: none;" v-show="showContent">
+    <header>
+        <div class="container over">
+            <div class="over">
+                <div class="headLogo left">
+                    <a href="">
+                        <ul>
+                            <li class="logoTit">绿地海湾</li>
+                        </ul>
+                    </a>
+                </div>
+                <div class="headRight right">
+                    <dl>
+                        <dt><img src="Public/Home/images/telLog.png" data-original="Public/Home/images/telLog.png" style="display: inline-block;"></dt>
+                        <dd>
+                            <small>免费服务热线：</small>
+                            <strong>400-1878-716</strong>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <li class="active"><a href="">首页</a></li>
+        <li><a href="#a">项目优势</a></li>
+        <li><a href="#b">项目介绍</a></li>
+        <li><a href="#c">样板户型</a></li>
+        <li><a href="#d">投资潜力</a></li>
+        <li><a href="#e">专业服务</a></li>
+        <li><a href="#f">预约看房</a></li>
+        <li><a href="">联系我们</a></li>
+    </nav>
+    <div class="banner">
+        <div class="flexslider">
+            <ul class="slides">
+                <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; transition: opacity 0.6s ease 0s; z-index: 2;"><img src="Public/Home/images/banner1.jpg" data-original="Public/Home/images/banner1.jpg" draggable="false" style="display: inline-block;"></li>
+
+            </ul>
+            <ol class="flex-control-nav flex-control-paging"></ol><ul class="flex-direction-nav"><li><a class="flex-prev flex-disabled" href="#" tabindex="-1"></a></li><li><a class="flex-next flex-disabled" href="#" tabindex="-1"></a></li></ul></div>
+    </div>
+    <div class="content">
+        <div class="section section1" v-if="detail['0']" :id="detail['0'].chart | getChar">
+            <div class="container">
+                <div class="tit">
+                    <small>Project Benefits</small>
+                    <h2>{{detail['0'].title}}</h2>
+                    <img src="Public/Home/images/titBg.png" data-original="Public/Home/images/titBg.png" style="display: inline-block;">
+                </div>
+                <div class="txt sec1Txt">
+                    <dl v-for="item in detail['0'].list"><a href="">
+                        <dt style="width: 386px;height: 260px;overflow: hidden;">
+                            <img style="display:inline-block;width: 386px;height: 260px;" v-if="item.url" :src="item.url"/>
+                        </dt>
+                        <dd>
+                            <em></em>
+                            <div>
+                                <h3>{{item.tips}}</h3>
+                            </div>
+                        </dd>
+                    </a></dl>
+                </div>
+            </div>
+        </div>
+        <div v-if="detail['1']" class="section section2" :id="detail['1'].chart | getChar">
+            <div class="tit">
+                <small>Project Introduction</small>
+                <h2>项目介绍</h2>
+                <!--<ul>-->
+                <!--<li class="active">周边环境</li>-->
+                <!--<li>交通规划</li>-->
+                <!--<li><a href="">更多咨询</a></li>-->
+                <!--</ul>-->
+
+                <ul>
+
+                    <li :class="{active:checkStatus === 1}" @click="toggleCheckStatus(1)">周边环境</li>
+
+                    <li :class="{active:checkStatus === 2}" @click="toggleCheckStatus(2)">交通规划</li>
+
+                    <li :class="{active:checkStatus === 3}" @click="toggleCheckStatus(3)"><a href="" target="_blank">更多咨询</a></li>
+
+                </ul>
+            </div>
+            <div class="txt sec1Txt sec2Txt">
+
+                <div :class="{ isShow:checkStatus === 2 }" >
+                    <dl v-for="item in detail['1'].list">
+
+                        <a href="" target="_blank">
+
+                            <dt><img :src="item.url"/></dt>
+
+                            <dd> <em></em>
+
+                                <div>
+
+                                    <h3>{{info.hiName}}</h3>
+
+                                    <P>{{item.tips}}</P>
+
+                                    <div class="more"> <span>了解更多</span> </div>
+
+                                </div>
+
+                            </dd>
+
+                        </a>
+
+                    </dl>
+
+                </div>
+                <div :class="{ isShow:checkStatus === 2 }" >
+                    <dl v-for="item in detail['2'].list">
+
+                        <a href="" target="_blank">
+
+                            <dt><img :src="item.url"/></dt>
+
+                            <dd> <em></em>
+                                <div>
+
+                                    <h3>{{info.hiName}}</h3>
+
+                                    <P>{{item.tips}}</P>
+
+                                    <div class="more"> <span>了解更多</span> </div>
+
+                                </div>
+                            </dd>
+                        </a>
+                    </dl>
+                </div>
+
+            </div>
+        </div>
+        <div class="section section1" :id="detail['3'].chart | getChar">
+
+            <div class="container">
+
+                <div class="tit"> <small>Project Benefits</small>
+                    <h2>样板户型</h2>
+
+                    <img src="Public/Home/images/titBg.png"> </div>
+
+                <div class="txt sec1Txt">
+
+                    <dl v-if="detail['3']" v-for="item in detail['3'].list">
+
+                        <a href="" target="_blank">
+
+                            <dt style="width: 386px;height: 260px;overflow: hidden;"><img style="width: 386px;height: 260px;" :src="item.url"></dt>
+
+                            <dd> <em></em>
+
+                                <div>
+
+                                    <h3>{{info.hiName}}}</h3>
+
+                                    <p>{{info.tips}}</p>
+
+                                    <div class="more"> <span>了解更多</span> </div>
+
+                                </div>
+
+                            </dd>
+
+                        </a>
+
+                    </dl>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="section section2" id="d">
+            <div class="tit">
+                <small>Project Introduction</small>
+                <h2>投资潜力</h2>
+                <img src="Public/Home/images/titBg.png" data-original="Public/Home/images/titBg.png">
+            </div>
+        </div>
+        <div class="txt sec3Txt">
+            <div class="container over">
+
+                <dl v-if="detail['4']" v-for="item in detail['4'].list">
+
+                    <a href="" target="_blank">
+
+                        <dt><img src="Public/Home/images/zhoubian1.png"><img src="Public/Home/images/zhoubian1_1.png"></dt>
+
+                        <dd>
+
+                            <h3>{{item.title}}</h3>
+
+                            <p>{{item.desc}}</p>
+
+                            <span></span> </dd>
+
+                    </a>
+
+                </dl>
+
+            </div>
+            <div class="containers">
+                <div><img src="Public/Home/images/q1.jpg" data-original="Public/Home/images/q1.jpg"></div>
+                <div class="txt">
+                    <img src="Public/Home/images/q2.jpg" data-original="Public/Home/images/q2.jpg">
+                    <a href=""><div class="txtMdiv1">
+                        <em></em>
+                        <div class="txtMdiv1s">
+                            <h3>绿地集团投资500亿打造生态居住样板小镇</h3>
+                            <p>地处滨海新城核心启动区内，耗巨资在打造四湖三林三小镇</p>
+                            <p><strong>400-1878-716</strong></p>
+                            <div class="zixun">
+                                <span>立即咨询</span>
+                            </div>
+                        </div>
+                    </div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section4" id="e">
+        <div class="container">
+            <div class="tit">
+                <small>professional service</small>
+                <h2>专业服务</h2>
+                <img src="Public/Home/images/titBg.png" data-original="Public/Home/images/titBg.png">
+            </div>
+            <div class="txt sec4Txt">
+                <dl><a href="">
+                    <dt><img src="Public/Home/images/fuwuImg1.jpg" data-original="Public/Home/images/fuwuImg1.jpg"></dt>
+                    <dd>
+                        <em></em>
+                        <div>
+                            <h3>预约</h3>
+                            <p>购买更多优惠价格可以享受，我们省了一笔中介费。房子当然更优惠</p>
+                            <span></span>
+                        </div>
+                    </dd>
+                </a></dl>
+                <dl><a href="">
+                    <dt><img src="Public/Home/images/fuwuImg2.jpg" data-original="Public/Home/images/fuwuImg2.jpg"></dt>
+                    <dd>
+                        <em></em>
+                        <div>
+                            <h3>好房源等于高价值</h3>
+                            <p>我们会优先帮你抢到抢手的优质房源，哪怕别人买不到，我们能帮您买到。好房子省到就是赚到!</p>
+                            <span></span>
+                        </div>
+                    </dd>
+                </a></dl>
+                <dl><a href="">
+                    <dt><img src="Public/Home/images/fuwuImg3.jpg" data-original="Public/Home/images/fuwuImg3.jpg"></dt>
+                    <dd>
+                        <em></em>
+                        <div>
+                            <h3>专业服务</h3>
+                            <p>买房缺首付?手头紧张?贷款有问题?别担心，我们都有办法帮您解决!只要您想买房，我们会全力以赴帮您解决!并且我们会全程跟踪，服务到底，任何问题都可以找我们!</p>
+                            <span></span>
+                        </div>
+                    </dd>
+                </a></dl>
+            </div>
+        </div>
+    </div>
+    <div class="section section5" id="f">
+        <div class="container">
+            <div class="tit">
+                <small>Book a shuttle bus</small>
+                <h2>预约看房</h2>
+                <img src="Public/Home/images/titBg2.png" data-original="Public/Home/images/titBg2.png">
+            </div>
+            <div class="txt sec5Txt">
+                <a href=""><div class="sec5Tit">
+                    <p>因班车有限，提前预约可享受免费<br>班车接送以及有限派车服务；<br><strong>非本地自驾客户提前预约可提供一对一专属服务，预留停车位!</strong></p>
+                    <strong>400-1878-716</strong>
+                    <div class="zixun">
+                        <span>立即咨询</span>
+                    </div>
+                </div></a>
+
+                <dl><a href="h">
+                    <dt><img src="Public/Home/images/banche.jpg" data-original="Public/Home/images/banche.jpg"></dt>
+                    <dd class="over">
+                        <div>
+                            <em></em>
+                            <div>
+                                <p>因班车有限，提前预约可享受免费<br>班车接送以及有限派车服务；<br><strong>非本地自驾客户提前预约可提供一对一专属服务，预留停车位!</strong></p>
+                                <p><span>预约班车热线：</span><strong>400-1878-716</strong></p>
+                            </div>
+                        </div>
+                    </dd>
+                </a></dl>
+
+                <div class="count">
+                    <p>今日已有<span>107</span>人免费获取到想要户型的信息</p>
+                    <p>在线智能获取房源信息，输入<span>手机号</span>和想要了解的<span>户型</span>获取详细介绍透彻了解您想要户型的优惠详情</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section6" id="f">
+        <div class="container">
+            <form id="mailForm" name="info_form" class="info_form">
+                <div>
+                    <label>户型：</label>
+                    <input type="text" name="shi"><span>室</span>
+                    <input type="text" name="ting"><span>厅</span>
+                    <input type="text" name="wei"><span>卫</span>
+                </div>
+                <div>
+                    <label>手机号： </label>
+                    <input type="tel" name="tel">
+                </div>
+                <div>
+                    <input type="button" onclick="message()" value="免费获取" name="">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="section section7" id="g">
+        <div class="container">
+            <div class="secTit">
+                <div>
+                    <p><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <ul>
+        <li><a href="">
+            <small><img src="Public/Home/images/foot1.png"></small>
+            <span>班车</span>
+        </a></li>
+        <li><a href="">
+            <small><img src="Public/Home/images/foot2.png"></small>
+            <span>预约</span>
+        </a></li>
+        <li><a href="tel:400-1878-716">
+            <small>
+                <small><img src="Public/Home/images/foot_tel.png"></small>
+            </small>
+            <em></em>
+            <span>电话咨询</span>
+        </a></li>
+        <li><a href="">
+            <small><img src="Public/Home/images/foot3.gif"></small>
+            <span>咨询</span>
+        </a></li>
+        <li><a href="">
+            <small><img src="Public/Home/images/foot4.png"></small>
+            <span>地址</span>
+        </a></li>
+    </ul>
+</footer>
+
+<div class="tankuang" style="display: none;">
+    <div>
+        <div class="tankuangDiv">
+            <a href="javascript:void(0)" onclick="onKST();">
+                <h2>我司公告</h2>
+                <p>近期客户反映某网站有返现金、领红包等活动均为中介钓鱼欺诈行为、望购房客户谨防优惠陷阱，避免上当受骗！对此，我司特通告提醒：正规买房渠道没有任何活动，实地看房请预约安排专车接送！</p>
+            </a>
+            <span><small></small></span>
+        </div>
+    </div>
+</div>
+<div class="xuanfu"><img src="Public/Home/images/xuanfu.png"></div>
+
+<div class="weixin">
+    <a href=""><img src="Public/Home/images/weixin.png"></a>
+</div>
+<div class="zxkuang">
+    <ul>
+        <span class="right"></span>
+        <a href="">
+            <li>
+                <img src="Public/Home/images/liuyan1.jpg" data-original="Public/Home/images/liuyan1.jpg">
+                <div>
+                    <span class="left"><img src="Public/Home/images/tel.gif" data-original="Public/Home/images/tel.gif"></span>
+                </div>
+            </li>
+            <li><img src="Public/Home/images/liuyan2.jpg" data-original="Public/Home/images/liuyan2.jpg"></li>
+            <li>
+                <img src="Public/Home/images/liuyan3.jpg" data-original="Public/Home/images/liuyan3.jpg">
+                <span><img src="Public/Home/images/2.gif" data-original="Public/Home/images/2.gif"></span>
+            </li>
+        </a></ul>
+</div>
+<script type="text/javascript" src="Public/Home/js/jquerys.js"></script>
+<script type="text/javascript" src="Public/Home/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript">
+    function sendMail() {
+        var mailForm = document.getElementById("mailForm");
+        var address = "mailto:" + document.getElementById("address").value;
+        mailForm.action = address;
+        mailForm.submit();
+    }
+
+    function message(){
+        var data = $('.info_form').serialize();
+        $.ajax({
+            url:'/userRequire/collectUserRequire.do',
+            data:data,
+            type:'POST',
+            dataType:'JSON',
+            success:function(data){
+                if(data.status > 0){
+                    alert(data.info);
+                }else{
+                    alert("恭喜您获取房源信息");
+                    location.reload();
+                }
+            }
+        })
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.flexslider').flexslider({
+            directionNav: true,
+            pauseOnAction: false
+        });
+    });
+</script>
+<script type="text/javascript">
+    function getUrlParmas(wordKey) {
+        var searchParams = {}
+        var a = location.href.split('?')
+        if (a.length > 0) {
+            searchParams =a[1].split('&')
+                .reduce(function(params,item,idx){
+                    var its = item.split('=')
+                    var key = its[0]
+                    var value = its[1]
+                    params[key] = value
+                    return params
+                },{})
+        }
+        return searchParams[wordKey] || ''
+    }
+    Vue.filter('getChar', function (idx) {
+        if (!idx) {
+            return ''
+        }
+        return String.fromCharCode(idx)
+    })
+    window.projectDetail = new Vue({
+        el:'#vue-init',
+        data:function() {
+            return {
+                showContent:false,
+                detail:{},
+                checkStatus:1,
+                info:null
+            }
+        },
+        created:function(){
+            this.init()
+        },
+        methods:{
+            init:function(){
+                var id = getUrlParmas('id')
+                var _self = this
+                $.ajax({
+                    url:'http://rap2api.taobao.org/app/mock/115522/newHouse/queryById.do?id='+id,
+                    type:'get',
+                    dataType:'json',
+                    success:function(response){
+                        if (response.status === 200) {
+                            if (response.data.detail.length) {
+                                _self.detail = response.data.detail.sort(function (o1, o2) {
+                                    var sort = 0
+                                    if (o1.type > o2.type) {
+                                        sort = 1
+                                    } else if (o1.type < o2.type) {
+                                        sort = -1
+                                    }
+                                    return sort
+                                }).reduce(function (detail, item, idx) {
+                                    if (!detail[item.type]) {
+                                        detail[item.type] = {
+                                            list: [],
+                                            title: ''
+                                        }
+                                    }
+                                    detail[item.type].chart = 97
+                                    detail[item.type].chart += item.type
+                                    detail[item.type].title = item.title
+                                    detail[item.type].list.push(item)
+                                    return detail
+                                }, {});
+                            }
+                            _self.info = response.data
+                            _self.showContent = true
+                            _self.$nextTick(function () {
+                                document.querySelector('title').innerHTML = _self.info.hiName
+                                var dom = $('.nb-icon-wrap-base.nb-icon-wrap-0-right-center')
+                                Array.prototype.slice.call($('a')).map(function(item){
+                                    var url = 'http://p.qiao.baidu.com/cps2/chatIndex?'
+                                    var reqParam = 'reqParam={"from":0,"sessionid":"","siteId":"12207321","tid":"-1","userId":"25810736","ttype":1,"siteConfig":{"wsUrl":"ws://p.qiao.baidu.com/websocket","eid":"25810736","queuing":"","siteId":"12207321","online":"true","webRoot":"//p.qiao.baidu.com/cps2/","bid":"154072944824779730","userId":"25810736","isGray":"false","invited":0},"config":{"themeColor":"4d74fa"}}'
+                                    $(item).attr('href',url + reqParam)
+                                })
+                            })
+                        }
+                    }
+                })
+            },
+            toggleCheckStatus:function (idx){
+                this.checkStatus = idx
+            }
+        }
+    })
+</script>
+<script>
+    $(function(){
+        $('a[href*=#],area[href*=#]').click(function() {
+            console.log(this.pathname)
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var $target = $(this.hash);
+                $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+                if ($target.length) {
+                    var targetOffset = $target.offset().top;
+                    $('html,body').animate({
+                            scrollTop: targetOffset
+                        },
+                        1000);
+                    return false;
+                }
+            }
+        });
+    })
+</script>
+<style type="text/css">.ks_ol_comm_div,.ks_ol_comm_div div,.ks_ol_comm_div p{margin:0px;background-color:transparent;position:static;height:initial;width:initial;}#MEIQIA-PANEL-HOLDER{display:none!important;}</style>
+</body>
+</html>

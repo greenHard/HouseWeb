@@ -16,6 +16,10 @@ public class NewHouseInfo implements Serializable {
     @NotBlank
     private String hiName;
 
+    // 楼盘描述
+    @NotBlank
+    private String hiDesc;
+
     @NotBlank
     private String hiLogo;
 
@@ -65,6 +69,8 @@ public class NewHouseInfo implements Serializable {
 
     @NotBlank
     private String hiHotLine;
+
+    private String hiQrCode;
 
     private Integer hiStatus;
 
@@ -222,5 +228,21 @@ public class NewHouseInfo implements Serializable {
 
     public void setHiCreateDate(Date hiCreateDate) {
         this.hiCreateDate = hiCreateDate;
+    }
+
+    public String getHiQrCode() {
+        return hiQrCode;
+    }
+
+    public void setHiQrCode(String hiQrCode) {
+        this.hiQrCode = hiQrCode;
+    }
+
+    public String getHiDesc() {
+        return hiDesc;
+    }
+
+    public void setHiDesc(String hiDesc) {
+        this.hiDesc = hiDesc;
     }
 }

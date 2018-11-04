@@ -15,6 +15,15 @@
             </tr>
 
             <tr>
+                <td>楼盘简述:</td>
+                <td>
+                     <textarea th:name="hiDesc" cols="60" rows="5" warp="virtual"
+                               class="easyui-validatebox" required="true"></textarea>
+                </td>
+            </tr>
+
+
+            <tr>
                 <td>楼盘Logo图片:</td>
                 <td>
                     <!-- 只能上传一张图片-->
@@ -43,11 +52,11 @@
             </tr>
 
 
-
             <tr>
                 <td>周边环境图片:</td>
                 <td>
-                    <a href="javascript:void(0)" class="easyui-linkbutton hiSurroundingEnviromentPicFileUpload">上传周边环境图片</a>
+                    <a href="javascript:void(0)"
+                       class="easyui-linkbutton hiSurroundingEnviromentPicFileUpload">上传周边环境图片</a>
                     <!-- 上传到后台的数据 -->
                     <input type="hidden" name="hiSurroundingEnviromentPic"/>
                 </td>
@@ -101,7 +110,6 @@
             </tr>
 
 
-
             <tr>
                 <td>投资潜力logo:</td>
                 <td>
@@ -136,6 +144,16 @@
                     <a href="javascript:void(0)" class="easyui-linkbutton hiIntervalPicFileUpload">间隔图片</a>
                     <!-- 上传到后台的数据 -->
                     <input type="hidden" name="hiIntervalPic"/>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>二维码:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiQrCodeFileUpload">二维码图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiQrCode"/>
                 </td>
             </tr>
 

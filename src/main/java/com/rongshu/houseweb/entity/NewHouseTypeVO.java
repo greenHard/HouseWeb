@@ -17,6 +17,17 @@ public class NewHouseTypeVO {
 
     private String hiHotLine;
 
+    // 二维码url
+    private String qrCode;
+
+    public String getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
+    }
+
     public Long getId() {
         return id;
     }

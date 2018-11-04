@@ -8,19 +8,19 @@ import com.google.common.collect.Ordering;
 import com.rongshu.houseweb.entity.NewHouseInfo;
 import com.rongshu.houseweb.entity.NewHousePicAndDescVo;
 import com.rongshu.houseweb.entity.NewHouseTypeVO;
+import com.rongshu.houseweb.entity.UserRequire;
 import com.rongshu.houseweb.service.NewHouseService;
+import com.rongshu.houseweb.service.UserRequireService;
 import com.rongshu.houseweb.vo.EasyUIResult;
 import com.rongshu.houseweb.vo.SysResult;
+import com.rongshu.houseweb.vo.UserRequireCollectVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -223,6 +223,7 @@ public class NewHouseController {
             newHouseTypeVO.setHiLogo(newHouseInfo.getHiLogo());
             newHouseTypeVO.setHiIntervalPic(newHouseInfo.getHiIntervalPic());
             newHouseTypeVO.setHiHotLine(newHouseInfo.getHiHotLine());
+            newHouseTypeVO.setQrCode(newHouseInfo.getHiQrCode());
 
             List<NewHousePicAndDescVo> list = new LinkedList<>();
 
@@ -234,6 +235,7 @@ public class NewHouseController {
             for (int i = 0; i < hiSuperiorityPicArr.length; i++) {
                 NewHousePicAndDescVo housePicAndDescVo = new NewHousePicAndDescVo();
                 housePicAndDescVo.setType(0);
+                housePicAndDescVo.setTitle("项目优势");
                 housePicAndDescVo.setUrl(hiSuperiorityPicArr[i]);
                 if (i < hiSuperiorityDescArr.length) {
                     housePicAndDescVo.setTips(hiSuperiorityDescArr[i]);
@@ -250,6 +252,7 @@ public class NewHouseController {
             for (int i = 0; i < hiSurroundingEnviromentPicArr.length; i++) {
                 NewHousePicAndDescVo housePicAndDescVo = new NewHousePicAndDescVo();
                 housePicAndDescVo.setType(1);
+                housePicAndDescVo.setTitle("周边环境");
                 housePicAndDescVo.setUrl(hiSurroundingEnviromentPicArr[i]);
                 if (i < hiSurroundingEnviromentDescArr.length) {
                     housePicAndDescVo.setTips(hiSurroundingEnviromentDescArr[i]);
@@ -266,6 +269,7 @@ public class NewHouseController {
             for (int i = 0; i < hiTrafficProgrammePicArr.length; i++) {
                 NewHousePicAndDescVo housePicAndDescVo = new NewHousePicAndDescVo();
                 housePicAndDescVo.setType(2);
+                housePicAndDescVo.setTitle("交通规划");
                 housePicAndDescVo.setUrl(hiTrafficProgrammePicArr[i]);
                 if (i < hiTrafficProgrammeDescArr.length) {
                     housePicAndDescVo.setTips(hiTrafficProgrammeDescArr[i]);
@@ -282,6 +286,7 @@ public class NewHouseController {
             for (int i = 0; i < hiExampleHouseTypePicArr.length; i++) {
                 NewHousePicAndDescVo housePicAndDescVo = new NewHousePicAndDescVo();
                 housePicAndDescVo.setType(3);
+                housePicAndDescVo.setTitle("样板户型");
                 housePicAndDescVo.setUrl(hiExampleHouseTypePicArr[i]);
                 if (i < hiExampleHouseTypeDescArr.length) {
                     housePicAndDescVo.setTips(hiExampleHouseTypeDescArr[i]);
@@ -300,8 +305,9 @@ public class NewHouseController {
             for (int i = 0; i < hiInvestmentPotentialTitleArr.length; i++) {
                 NewHousePicAndDescVo housePicAndDescVo = new NewHousePicAndDescVo();
                 housePicAndDescVo.setType(4);
-                housePicAndDescVo.setTitle(hiInvestmentPotentialTitleArr[i]);
-                if(i<hiInvestmentPotentialLogoArr.length){
+                housePicAndDescVo.setTitle("投资潜力");
+                housePicAndDescVo.setTips(hiInvestmentPotentialTitleArr[i]);
+                if (i < hiInvestmentPotentialLogoArr.length) {
                     housePicAndDescVo.setUrl(hiInvestmentPotentialLogoArr[i]);
                 }
                 if (i < hiInvestmentPotentialDescArr.length) {
@@ -339,4 +345,11 @@ public class NewHouseController {
 
         return new EasyUIResult(pageInfo.getTotal(), pageInfo.getList());
     }
+
+
+
+
+
+
+
 }

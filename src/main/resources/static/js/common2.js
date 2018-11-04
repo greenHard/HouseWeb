@@ -449,8 +449,8 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
                     var editor = this;
                     editor.plugin.multiImageDialog({
                         clickFn: function (urlList) {
-                            if (urlList.length > 1) {
-                                alert("只允许上传一张图片");
+                            if (urlList.length > 3) {
+                                alert("只允许上传三张图片");
                                 return;
                             }
                             form.find(".hiLogo ul li").remove();
@@ -692,6 +692,48 @@ var TT = KindEditorUtil = {		//相当于java中定义的工具类，里面提供
                 });
             });
         });
+
+        // 二维码图片
+        $(".hiQrCodeFileUpload").each(function (i, e) {
+            var _ele = $(e);
+            _ele.siblings("div.hiQrCode").remove();
+            _ele.after('\
+    			<div class="hiQrCode">\
+        			<ul></ul>\
+        		</div>');
+            // 回显图片
+            if (data && data.pics) {
+                var imgs = data.pics.split(",");
+                for (var i in imgs) {
+                    if ($.trim(imgs[i]).length > 0) {
+                        _ele.siblings(".hiQrCode").find("ul").append("<li><a href='" + imgs[i] + "' target='_blank'><img src='" + imgs[i] + "' width='80' height='50' /></a></li>");
+                    }
+                }
+            }
+            $(e).click(function () {
+                var form = $(this).parentsUntil("form").parent("form");
+                KindEditor.editor(TT.kingEditorParams).loadPlugin('multiimage', function () {
+                    var editor = this;
+                    editor.plugin.multiImageDialog({
+                        clickFn: function (urlList) {
+                            if (urlList.length > 1) {
+                                alert("只允许上传一张图片");
+                                return;
+                            }
+                            form.find(".hiQrCode ul li").remove();
+                            var imgArray = [];
+                            KindEditor.each(urlList, function (i, data) {
+                                imgArray.push(data.url);
+                                form.find(".hiQrCode ul").append("<li><a href='" + data.url + "' target='_blank'><img src='" + data.url + "' width='80' height='50' /></a></li>");
+                            });
+                            form.find("[name=hiQrCode]").val(imgArray.join(","));
+                            editor.hideDialog();
+                        }
+                    });
+                });
+            });
+        });
+
     },
     createEditor: function (select) {
         return KindEditor.create(select, TT.kingEditorParams);

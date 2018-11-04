@@ -16,6 +16,14 @@
             </tr>
 
             <tr>
+                <td>楼盘简述:</td>
+                <td>
+                     <textarea th:name="hiDesc" cols="60" rows="5" warp="virtual"
+                               class="easyui-validatebox" required="true"></textarea>
+                </td>
+            </tr>
+
+            <tr>
                 <td>楼盘Logo图片:</td>
                 <td>
                     <!-- 只能上传一张图片-->
@@ -145,6 +153,15 @@
                 <td>
                     <input class="easyui-textbox" type="text" th:name="hiHotLine" data-options="required:true"
                            style="width: 150px;"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>二维码:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton hiQrCodeFileUpload">二维码图片</a>
+                    <!-- 上传到后台的数据 -->
+                    <input type="hidden" name="hiQrCode"/>
                 </td>
             </tr>
         </table>
