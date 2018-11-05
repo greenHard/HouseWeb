@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.Condition;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.base.Preconditions;
+import com.google.common.base.Strings;
 import com.rongshu.houseweb.entity.NewHouseInfo;
 import com.rongshu.houseweb.entity.UserRequire;
 import com.rongshu.houseweb.service.NewHouseService;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -106,10 +108,34 @@ public class UserRequireController {
      * @return 成功或者失败
      */
     @PostMapping("/collectUserRequire")
+    @CrossOrigin(origins = "*")
     public @ResponseBody
-    SysResult collectUserRequire(@RequestBody UserRequireCollectVo userRequireCollectVo) {
-
+    SysResult collectUserRequire(HttpServletRequest request) {
         try {
+            //shi=1&ting=2&wei=1&tel=412424
+            String shi = request.getParameter("shi");
+            String ting = request.getParameter("ting");
+            String wei = request.getParameter("wei");
+            String tel = request.getParameter("tel");
+
+
+            StringBuilder requireHouseType = new StringBuilder();
+            if(! Strings.isNullOrEmpty(shi)){
+                requireHouseType.append(shi).append("室");
+            }
+
+            if(! Strings.isNullOrEmpty(ting)){
+                requireHouseType.append(ting).append("厅");
+            }
+
+            if(! Strings.isNullOrEmpty(wei)){
+                requireHouseType.append(wei).append("卫");
+            }
+            UserRequireCollectVo userRequireCollectVo = new UserRequireCollectVo();
+            userRequireCollectVo.setRequireHouseType(requireHouseType.toString());
+            if(! Strings.isNullOrEmpty(wei)){
+                userRequireCollectVo.setMobileNumber(tel);
+            }
             logger.info("开始获取楼盘信息: " + userRequireCollectVo);
             Preconditions.checkNotNull(userRequireCollectVo);
             // 获取楼盘信息id

@@ -42,6 +42,9 @@
     .isShow {
       display: block !important;
     }
+    .hidden {
+      display: none !important;
+    }
   </style>
 </head>
 
@@ -54,9 +57,9 @@
 
         <ul>
 
-          <li class="logoTit">绿地海湾</li>
+          <li class="logoTit">{{info.hiName}}</li>
 
-          <li class="logoTxt"> <span>绿地集团投资500亿</span> <small>打造生态居住样板小镇</small> </li>
+          <li class="logoTxt" v-show="headerInfo.length"> <span>{{ headerInfo[0] }}</span> <small>{{ headerInfo[1] }}</small> </li>
 
         </ul>
 
@@ -68,7 +71,7 @@
 
           <dt><img src="Public/Home/images/telLog.png"/></dt>
 
-          <dd> <small>免费服务热线：</small> <strong>400-1799-781</strong> </dd>
+          <dd> <small>免费服务热线：</small> <strong>{{info.hiHotLine}}</strong> </dd>
 
         </dl>
       </div>
@@ -86,11 +89,11 @@
 
       <li><a href="#c">投资潜力</a></li>
 
-      <li><a href="#d">专业服务</a></li>
+      <li><a href="#t">专业服务</a></li>
 
-      <li><a href="#e">预约看房</a></li>
+      <li><a href="#q">预约看房</a></li>
 
-      <li><a href="https://ryak66.kuaishang.cn/bs/im.htm?cas=58222___929507&fi=68990" target="_blank">联系我们</a></li>
+      <li><a href="#y">联系我们</a></li>
 
     </div>
 
@@ -101,11 +104,8 @@
 
       <ul class="slides">
 
-        <li><img src="Public/Home/images/banner1.png"></li>
+        <li v-for="item in info.logos"><img :src="item"></li>
 
-        <li><img src="Public/Home/images/banner2.jpg"></li>
-
-        <li><img src="Public/Home/images/banner3.jpg"></li>
 
       </ul>
 
@@ -174,7 +174,7 @@
 
       <div class="txt sec1Txt sec2Txt">
 
-        <div :class="{ isShow:checkStatus === 2 }" >
+        <div :class="{ isShow:checkStatus === 1,hidden: checkStatus !== 1}" >
           <dl v-for="item in detail['1'].list">
 
             <a href="" target="_blank">
@@ -184,23 +184,17 @@
             <dd> <em></em>
 
               <div>
-
                 <h3>{{info.hiName}}</h3>
 
                 <P>{{item.tips}}</P>
 
                 <div class="more"> <span>了解更多</span> </div>
-
               </div>
-
             </dd>
-
             </a>
-
           </dl>
-
         </div>
-        <div :class="{ isShow:checkStatus === 2 }" >
+        <div :class="{ isShow:checkStatus === 2,hidden: checkStatus !== 2}" >
           <dl v-for="item in detail['2'].list">
 
             <a href="" target="_blank">
@@ -247,9 +241,9 @@
 
                 <div>
 
-                  <h3>{{info.hiName}}}</h3>
+                  <h3>{{info.hiName}}</h3>
 
-                  <p>{{info.tips}}</p>
+                  <p>{{item.tips}}</p>
 
                   <div class="more"> <span>了解更多</span> </div>
 
@@ -267,7 +261,7 @@
 
     </div>
 
-    <div v-if="detail['4']" class="section section3" :id="detail['4'].chart | getChar">
+    <div v-if="detail['4']" class="section section3" id="c">
 
       <div class="tit"> <small>Peripheral support</small>
 
@@ -329,7 +323,7 @@
 
     </div>
 
-    <div class="section section4" id="d">
+    <div class="section section4" id="t">
 
       <div class="container">
 
@@ -431,7 +425,7 @@
 
     </div>
 
-    <div class="section section5" id="e">
+    <div class="section section5" id="q">
 
       <div class="container">
 
@@ -481,7 +475,7 @@
 
     </div>
 
-    <div class="section section6" id="f">
+    <div class="section section6" id="y">
 
       <div class="container">
 
@@ -498,13 +492,13 @@
 
               <dt><img src="Public/Home/images/teLogo.png"/></dt>
 
-              <dd> <span>电话：</span> <strong>400-1878-716</strong> </dd>
+              <dd> <span>电话：</span> <strong>{{info.hiHotLine}}</strong> </dd>
 
             </dl>
 
             <dl>
 
-              <dt><img :src="info.hiQRcode"/></dt>
+              <dt><img style="width: 100px;" :src="info.qrCode"/></dt>
 
               <dd> <span>扫一扫</span> <span>联系客服经理</span> </dd>
 
@@ -541,11 +535,11 @@
 
       <li><a href="#c">投资潜力</a></li>
 
-      <li><a href="#d">专业服务</a></li>
+      <li><a href="#t">专业服务</a></li>
 
-      <li><a href="#e">预约看房</a></li>
+      <li><a href="#q">预约看房</a></li>
 
-      <li><a href="" target="_blank">联系我们</a></li>
+      <li><a href="#y">联系我们</a></li>
 
     </ul>
 
@@ -664,8 +658,9 @@
           return {
               showContent:false,
               detail:{},
-              checkStatus:1,
-              info:null
+              checkStatus: 1,
+              info: {},
+              headerInfo:''
           }
       },
       created:function(){
@@ -676,7 +671,7 @@
               var id = getUrlParmas('id')
               var _self = this
               $.ajax({
-                  url:'http://rap2api.taobao.org/app/mock/115522/newHouse/queryById.do?id='+id,
+                  url:'http://www.dexudichan.com/newHouse/queryById?id='+id,
                   type:'get',
                   dataType:'json',
                   success:function(response){
@@ -705,14 +700,32 @@
                               }, {});
                           }
                           _self.info = response.data
+                          if (_self.info.hiDesc) {
+                              _self.headerInfo = _self.info.hiDesc.split('||')
+                          }
+                          if (_self.info.hiLogo ) {
+                              _self.info.logos =  _self.info.hiLogo.split(',')
+                          }
+
                           _self.showContent = true
                           _self.$nextTick(function () {
                               document.querySelector('title').innerHTML = _self.info.hiName
-                              Array.prototype.slice.call($('a')).map(function(item){
+                              Array.prototype.slice.call($("a")).map(function(item){
+                                  var href = $(item).attr('href')
+                                  if (/^#/.test(href)){
+                                      return false
+                                  }
                                   var url = 'http://p.qiao.baidu.com/cps2/chatIndex?'
                                   var reqParam = 'reqParam={"from":0,"sessionid":"","siteId":"12207321","tid":"-1","userId":"25810736","ttype":1,"siteConfig":{"wsUrl":"ws://p.qiao.baidu.com/websocket","eid":"25810736","queuing":"","siteId":"12207321","online":"true","webRoot":"//p.qiao.baidu.com/cps2/","bid":"154072944824779730","userId":"25810736","isGray":"false","invited":0},"config":{"themeColor":"4d74fa"}}'
                                   $(item).attr('href',url + reqParam)
                               })
+                              $('.flexslider').flexslider({
+
+                                  directionNav: true,
+
+                                  pauseOnAction: false
+
+                              });
                           })
                       }
                   }

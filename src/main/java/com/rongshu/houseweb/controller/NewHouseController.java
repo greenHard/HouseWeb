@@ -209,6 +209,7 @@ public class NewHouseController {
      * @return 楼盘信息封装对象
      */
     @GetMapping("queryById")
+    @CrossOrigin(origins="*")
     public @ResponseBody
     SysResult queryById(@NumberFormat Long id) {
         try {
@@ -220,6 +221,7 @@ public class NewHouseController {
             NewHouseTypeVO newHouseTypeVO = new NewHouseTypeVO();
             newHouseTypeVO.setId(newHouseInfo.getId());
             newHouseTypeVO.setHiName(newHouseInfo.getHiName());
+            newHouseTypeVO.setHiDesc(newHouseInfo.getHiDesc());
             newHouseTypeVO.setHiLogo(newHouseInfo.getHiLogo());
             newHouseTypeVO.setHiIntervalPic(newHouseInfo.getHiIntervalPic());
             newHouseTypeVO.setHiHotLine(newHouseInfo.getHiHotLine());
@@ -334,11 +336,16 @@ public class NewHouseController {
      * @return 返回要的内容
      */
     @GetMapping("findAll")
+    @CrossOrigin("*")
     public @ResponseBody
     EasyUIResult findAll() {
         List<NewHouseInfo> newHouseInfoList = newHouseService.list(Condition.<NewHouseInfo>lambda()
                 .eq(NewHouseInfo::getHiStatus, 1));
 
+        newHouseInfoList.forEach(h ->{
+            String[] split = h.getHiLogo().split(",");
+            h.setHiLogo(split[0]);
+        });
         // 同PageInfo对象来封装两个结果，记录总数，当前页的记录；Page支持线程安全
         // 真正的执行者
         PageInfo<NewHouseInfo> pageInfo = new PageInfo<>(newHouseInfoList);

@@ -138,13 +138,13 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-3" v-for="item in dataList">
-                    <a class="index_case_block" :href="'/static/view/detail.html?id=' + item.id" target="_blank">
+                    <a class="index_case_block" :href="'/static/house/index.html?id=' + item.id" target="_blank">
                         <div class="cp_img">
                             <div class="cp_img_top"></div>
-                            <img class="img-position-absolute" :src="item.hiShowPic"/>
+                            <img class="img-position-absolute" :src="item.hiLogo"/>
                         </div>
                         <div class="cp_p">{{item.hiName}}</div>
-                        <div class="cp_sp">楼盘位置：{{item.hiAddress}}</div>
+                        <!--<div class="cp_sp">楼盘位置：{{item.hiAddress}}</div>-->
                         <div class="cp_more">查看楼盘</div>
                     </a>
                 </div>
@@ -201,7 +201,7 @@
                 created: function () {
                     var self = this;
                     $.ajax({
-                        url: 'http://www.dexudichan.com/house/findAll',
+                        url: 'http://www.dexudichan.com/newHouse/findAll',
                         dataType: 'json',
                         data: {
                             pageSize: 50,

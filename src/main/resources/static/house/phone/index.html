@@ -8,8 +8,8 @@
     <meta http-equiv="refresh" content="2; url=index_ie8.html">
     <![endif]-->
     <title></title>
-    <meta name="keywords" content="绿地海湾">
-    <meta name="description" content="绿地海湾">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
     <link rel="stylesheet" type="text/css" href="Public/Home/css/style.css">
     <script src="https://hm.baidu.com/hm.js?88e9d524383fdf9851bf433ec610d4cc"></script>
     <script type="text/javascript" src="Public/Home/js/jquery-1.10.1.min.js"></script>
@@ -33,6 +33,14 @@
         })();
     </script>
 </head>
+<style>
+    .isShow {
+        display: block !important;
+    }
+    .hidden {
+        display: none !important;
+    }
+</style>
 <body style="">
 <div id="ks_ol_chatWin" class="ks_ol_comm_div"></div>
 <div id="_ks_ol_inviteWin" class="ks_ol_comm_div" style="display: none; width: auto; z-index: 2147483647; left: 0px; top: 50%; position: fixed !important; margin-top: -100px !important;">
@@ -42,14 +50,14 @@
         </div>
         <div style="position: absolute; width: 23px; height: 23px; top: 5px; left: 215px; cursor: pointer; line-height: 0px;" id="div23" class="seldiv" name="关闭按钮" orig_x="316" orig_y="7" orig_index="0"></div>
     </div></div></div><div id="ks_ol_floatWin" class="ks_ol_comm_div"></div>
-<div class="box" id="vue-init" style="display: none;" v-show="showContent">
+<div class="box" id="vue-init" style="display: none;" v-show="showContent" v-if="info">
     <header>
         <div class="container over">
             <div class="over">
                 <div class="headLogo left">
                     <a href="">
                         <ul>
-                            <li class="logoTit">绿地海湾</li>
+                            <li class="logoTit">{{info.hiName}}</li>
                         </ul>
                     </a>
                 </div>
@@ -58,7 +66,7 @@
                         <dt><img src="Public/Home/images/telLog.png" data-original="Public/Home/images/telLog.png" style="display: inline-block;"></dt>
                         <dd>
                             <small>免费服务热线：</small>
-                            <strong>400-1878-716</strong>
+                            <strong>{{info.hiHotLine}}</strong>
                         </dd>
                     </dl>
                 </div>
@@ -66,7 +74,7 @@
         </div>
     </header>
     <nav>
-        <li class="active"><a href="">首页</a></li>
+        <li class="active"><a href="#he">首页</a></li>
         <li><a href="#a">项目优势</a></li>
         <li><a href="#b">项目介绍</a></li>
         <li><a href="#c">样板户型</a></li>
@@ -78,7 +86,7 @@
     <div class="banner">
         <div class="flexslider">
             <ul class="slides">
-                <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; transition: opacity 0.6s ease 0s; z-index: 2;"><img src="Public/Home/images/banner1.jpg" data-original="Public/Home/images/banner1.jpg" draggable="false" style="display: inline-block;"></li>
+                <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; transition: opacity 0.6s ease 0s; z-index: 2;"><img :src="info.logos[0]" data-original="Public/Home/images/banner1.jpg" draggable="false" style="display: inline-block;"></li>
 
             </ul>
             <ol class="flex-control-nav flex-control-paging"></ol><ul class="flex-direction-nav"><li><a class="flex-prev flex-disabled" href="#" tabindex="-1"></a></li><li><a class="flex-next flex-disabled" href="#" tabindex="-1"></a></li></ul></div>
@@ -93,8 +101,8 @@
                 </div>
                 <div class="txt sec1Txt">
                     <dl v-for="item in detail['0'].list"><a href="">
-                        <dt style="width: 386px;height: 260px;overflow: hidden;">
-                            <img style="display:inline-block;width: 386px;height: 260px;" v-if="item.url" :src="item.url"/>
+                        <dt>
+                            <img v-if="item.url" :src="item.url"/>
                         </dt>
                         <dd>
                             <em></em>
@@ -128,50 +136,24 @@
             </div>
             <div class="txt sec1Txt sec2Txt">
 
-                <div :class="{ isShow:checkStatus === 2 }" >
+                <div :class="{ isShow:checkStatus === 1,hidden: checkStatus !== 1}" >
                     <dl v-for="item in detail['1'].list">
 
                         <a href="" target="_blank">
 
                             <dt><img :src="item.url"/></dt>
 
-                            <dd> <em></em>
-
-                                <div>
-
-                                    <h3>{{info.hiName}}</h3>
-
-                                    <P>{{item.tips}}</P>
-
-                                    <div class="more"> <span>了解更多</span> </div>
-
-                                </div>
-
-                            </dd>
-
                         </a>
 
                     </dl>
 
                 </div>
-                <div :class="{ isShow:checkStatus === 2 }" >
+                <div :class="{ isShow:checkStatus === 2,hidden: checkStatus !== 2}" >
                     <dl v-for="item in detail['2'].list">
 
                         <a href="" target="_blank">
 
                             <dt><img :src="item.url"/></dt>
-
-                            <dd> <em></em>
-                                <div>
-
-                                    <h3>{{info.hiName}}</h3>
-
-                                    <P>{{item.tips}}</P>
-
-                                    <div class="more"> <span>了解更多</span> </div>
-
-                                </div>
-                            </dd>
                         </a>
                     </dl>
                 </div>
@@ -189,19 +171,17 @@
 
                 <div class="txt sec1Txt">
 
-                    <dl v-if="detail['3']" v-for="item in detail['3'].list">
+                    <dl style="height: auto;" v-if="detail['3']" v-for="item in detail['3'].list">
 
                         <a href="" target="_blank">
 
-                            <dt style="width: 386px;height: 260px;overflow: hidden;"><img style="width: 386px;height: 260px;" :src="item.url"></dt>
+                            <dt><img :src="item.url"></dt>
 
                             <dd> <em></em>
 
                                 <div>
 
-                                    <h3>{{info.hiName}}}</h3>
-
-                                    <p>{{info.tips}}</p>
+                                    <h3>{{item.tips}}</h3>
 
                                     <div class="more"> <span>了解更多</span> </div>
 
@@ -241,7 +221,6 @@
                             <p>{{item.desc}}</p>
 
                             <span></span> </dd>
-
                     </a>
 
                 </dl>
@@ -256,7 +235,7 @@
                         <div class="txtMdiv1s">
                             <h3>绿地集团投资500亿打造生态居住样板小镇</h3>
                             <p>地处滨海新城核心启动区内，耗巨资在打造四湖三林三小镇</p>
-                            <p><strong>400-1878-716</strong></p>
+                            <p><strong>{{info.hiHotLine}}</strong></p>
                             <div class="zixun">
                                 <span>立即咨询</span>
                             </div>
@@ -320,7 +299,7 @@
             <div class="txt sec5Txt">
                 <a href=""><div class="sec5Tit">
                     <p>因班车有限，提前预约可享受免费<br>班车接送以及有限派车服务；<br><strong>非本地自驾客户提前预约可提供一对一专属服务，预留停车位!</strong></p>
-                    <strong>400-1878-716</strong>
+                    <strong>{{info.hiHotLine}}</strong>
                     <div class="zixun">
                         <span>立即咨询</span>
                     </div>
@@ -333,7 +312,7 @@
                             <em></em>
                             <div>
                                 <p>因班车有限，提前预约可享受免费<br>班车接送以及有限派车服务；<br><strong>非本地自驾客户提前预约可提供一对一专属服务，预留停车位!</strong></p>
-                                <p><span>预约班车热线：</span><strong>400-1878-716</strong></p>
+                                <p><span>预约班车热线：</span><strong>{{info.hiHotLine}}</strong></p>
                             </div>
                         </div>
                     </dd>
@@ -346,7 +325,7 @@
             </div>
         </div>
     </div>
-    <div class="section section6" id="f">
+    <div class="section section6" id="">
         <div class="container">
             <form id="mailForm" name="info_form" class="info_form">
                 <div>
@@ -385,7 +364,7 @@
             <small><img src="Public/Home/images/foot2.png"></small>
             <span>预约</span>
         </a></li>
-        <li><a href="tel:400-1878-716">
+        <li><a href="tel:">
             <small>
                 <small><img src="Public/Home/images/foot_tel.png"></small>
             </small>
@@ -449,7 +428,7 @@
     function message(){
         var data = $('.info_form').serialize();
         $.ajax({
-            url:'/userRequire/collectUserRequire.do',
+            url:'http://www.dexudichan.com/userRequire/collectUserRequire.do',
             data:data,
             type:'POST',
             dataType:'JSON',
@@ -464,14 +443,7 @@
         })
     }
 </script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('.flexslider').flexslider({
-            directionNav: true,
-            pauseOnAction: false
-        });
-    });
-</script>
+
 <script type="text/javascript">
     function getUrlParmas(wordKey) {
         var searchParams = {}
@@ -512,7 +484,7 @@
                 var id = getUrlParmas('id')
                 var _self = this
                 $.ajax({
-                    url:'http://rap2api.taobao.org/app/mock/115522/newHouse/queryById.do?id='+id,
+                    url:'http://www.dexudichan.com/newHouse/queryById?id='+id,
                     type:'get',
                     dataType:'json',
                     success:function(response){
@@ -541,14 +513,32 @@
                                 }, {});
                             }
                             _self.info = response.data
+                            if (_self.info.hiDesc) {
+                                _self.headerInfo = _self.info.hiDesc.split('||')
+                            }
+                            if (_self.info.hiLogo ) {
+                                _self.info.logos =  _self.info.hiLogo.split(',')
+                            }
                             _self.showContent = true
                             _self.$nextTick(function () {
                                 document.querySelector('title').innerHTML = _self.info.hiName
                                 var dom = $('.nb-icon-wrap-base.nb-icon-wrap-0-right-center')
                                 Array.prototype.slice.call($('a')).map(function(item){
+                                    var href = $(item).attr('href')
+                                    if (/^#/.test(href)) {
+                                        return
+                                    }
+                                    if (/^tel\:/.test(href)) {
+                                        $(item).attr('href','tel:' + _self.info.hiHotLine)
+                                        return false
+                                    }
                                     var url = 'http://p.qiao.baidu.com/cps2/chatIndex?'
                                     var reqParam = 'reqParam={"from":0,"sessionid":"","siteId":"12207321","tid":"-1","userId":"25810736","ttype":1,"siteConfig":{"wsUrl":"ws://p.qiao.baidu.com/websocket","eid":"25810736","queuing":"","siteId":"12207321","online":"true","webRoot":"//p.qiao.baidu.com/cps2/","bid":"154072944824779730","userId":"25810736","isGray":"false","invited":0},"config":{"themeColor":"4d74fa"}}'
                                     $(item).attr('href',url + reqParam)
+                                })
+                                $('.flexslider').flexslider({
+                                    directionNav: true,
+                                    pauseOnAction: false
                                 })
                             })
                         }

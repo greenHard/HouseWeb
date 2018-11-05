@@ -8,6 +8,8 @@ public class NewHouseTypeVO {
 
     private String hiName;
 
+    private String hiDesc;
+
     private String hiLogo;
 
     private List<NewHousePicAndDescVo> detail;
@@ -74,5 +76,13 @@ public class NewHouseTypeVO {
 
     public void setHiHotLine(String hiHotLine) {
         this.hiHotLine = hiHotLine;
+    }
+
+    public String getHiDesc() {
+        return hiDesc;
+    }
+
+    public void setHiDesc(String hiDesc) {
+        this.hiDesc = hiDesc;
     }
 }
