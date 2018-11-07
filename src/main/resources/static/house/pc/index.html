@@ -129,7 +129,7 @@
           <dl v-for="item in detail['0'].list">
 
             <dt style="width: 386px;height: 260px;overflow: hidden;"><img style="display:inline-block;width: 386px;height: 260px;" v-if="item.url" :src="item.url"/></dt>
-
+            <a>
             <dd> <em></em>
 
               <div>
@@ -166,7 +166,7 @@
 
           <li :class="{active:checkStatus === 2}" @click="toggleCheckStatus(2)">交通规划</li>
 
-          <li :class="{active:checkStatus === 3}" @click="toggleCheckStatus(3)"><a href="" target="_blank">更多咨询</a></li>
+          <a href="" target="_blank"><li :class="{active:checkStatus === 3}" @click="toggleCheckStatus(3)">更多咨询</li></a>
 
         </ul>
 
@@ -220,7 +220,7 @@
 
     </div>
 
-    <div class="section section1" :id="detail['3'].chart | getChar">
+    <div class="section section1" v-if="detail['3']" :id="detail['3'].chart | getChar">
 
       <div class="container">
 
@@ -241,7 +241,7 @@
 
                 <div>
 
-                  <h3>{{info.hiName}}</h3>
+                  <h3>{{info.hiName}}}</h3>
 
                   <p>{{item.tips}}</p>
 
@@ -281,7 +281,7 @@
 
             <dd>
 
-              <h3>{{item.title}}</h3>
+              <h3>{{item.tips}}</h3>
 
               <p>{{item.desc}}</p>
 
@@ -545,11 +545,11 @@
 
     <div class="bq">
 
-      <p><span></span> </p>
+      <p>版权所有©2018 上海德旭房地产经纪有限公司 沪ICP备18023790号</p>
 
     </div>
 
-    <div class="foot active"> <span><img src="Public/Home/images/fyImg.jpg"/></span>
+    <div class="foot active" style="height: auto"> <span><img src="Public/Home/images/fyImg.jpg"/></span>
 
       <div>
         <div class="container">
@@ -613,8 +613,8 @@
 
               </div>
 
-              <small><img src="Public/Home/images/footXx.png"/></small> </div>
-
+              <small><img src="Public/Home/images/footXx.png"/></small>
+            </div>
           </div>
 
         </div>
@@ -692,10 +692,12 @@
                                           title: ''
                                       }
                                   }
-                                  detail[item.type].chart = 97
-                                  detail[item.type].chart += item.type
-                                  detail[item.type].title = item.title
-                                  detail[item.type].list.push(item)
+                                  if (detail[item.type]) {
+                                      detail[item.type].chart = 97
+                                      detail[item.type].chart += item.type
+                                      detail[item.type].title = item.title
+                                      detail[item.type].list.push(item)
+                                  }
                                   return detail
                               }, {});
                           }

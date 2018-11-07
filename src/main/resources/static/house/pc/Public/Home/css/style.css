@@ -59,7 +59,7 @@ footer div.foot>div{ background-color: #353639; height: 130px; width: 100%; }
 footer div.mDiv>small{ position: absolute; right: 0; top: 40%; opacity: 0; transition: all 0.3s linear 0s; }
 footer div.foot .container>div{ position: relative; }
 footer div.foot .container>div>span{ position: absolute; top:-48px; left: 0; }
-footer div.foot .container>div>div{ position: relative; padding: 17px 0; overflow: hidden;bottom: 20px; }
+footer div.foot .container>div>div{ position: relative; padding: 17px 0; overflow: hidden; }
 footer div.foot.active{ width: 100%; }
 footer div.active .mDiv>small{ opacity: 1; cursor: pointer; }
 footer div.foot p{ font-size: 16px; color: #fff; line-height: 30px; }
@@ -178,7 +178,7 @@ footer div.foot2 form div input[type="button"]{ width: 105px; height: 45px; back
 
 
 @media screen and (max-width: 1679px){
-.headLogo{ margin-left: 150px; }
+   .headLogo{ margin-left: 150px; }
 }
 
 
