@@ -1,51 +1,120 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html;" charset="utf-8"/>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>后台管理系统</title>
-    <link href="/static/skin/default/css/login.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="/static/js/common.js"></script>
+    <meta name="keywords" content="后台管理系统">
+    <meta name="description" content="后台管理系统">
+    <link href="/static/new/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/new/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="/static/new/css/animate.css" rel="stylesheet">
+    <link href="/static/new/css/style.css" rel="stylesheet">
+    <link href="/static/new/css/login.css" rel="stylesheet">
+    <link href="/static/new/css/style.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+    <script>
+        if (window.top !== window.self) {
+            window.top.location = window.location;
+        }
+    </script>
+
 </head>
 
-<body>
-<form id="login_main" method="post" action="/user/doLogin">
-    <div id="warpbox">
-        <div class="main">
-            <div class="zck">
-                <div class="zc">
-                    <div class="zc_line">用户名：
-                        <input type="text" value="" name="userName" id="userName"
-                               onkeyup="showGs(event)"
-                               onFocus="this.select();"
-                               autocomplete="off" title="请您输入用户名"/>
-                        <div id="ts" style="z-index:1;"></div>
-                    </div>
-                    <div class="zc_line">密　码：
-                        <input type="password" value="" name="password" id="password"
-                               onfocus="$('#ts').css('display','none');this.select();"
-                               onKeyDown="javascript:if(event.keyCode==13){ submitFind(); }"
-                               title="请您输入密码"/></div>
-                </div>
-                <div class="dl">
-                    <input class="dl_img" value="" type="button" onclick="formSubmit();"
-                           onmouseover="this.style.background='url(/static/skin/default/images/login/dl_h.jpg) no-repeat'"
-                           onmouseout="this.style.background='url(/static/skin/default/images/login/dl_a.jpg) no-repeat'"
-                    />
-                    <input class="reset_img" value="" type="button"
-                           onmouseover="this.style.background='url(/static/skin/default/images/login/reset_h.jpg) no-repeat'"
-                           onmouseout="this.style.background='url(/static/skin/default/images/login/reset_a.jpg) no-repeat'"
-                    />
-                </div>
-
-            </div>
+<body class="signin">
+<div class="signinpanel">
+    <form id="signupForm">
+        <h3 class="text-center">用户登录</h3>
+        <p class="m-t-md text-center">欢迎登录后台管理系统</p>
+        <input id="username" name="userName" type="text" placeholder="用户名" class="layui-input uname name"/>
+        <input id="password" name="password" type="password" placeholder="密码" class="layui-input pword m-b"/>
+        <div id="message" style="display:none;width: 100%;text-align: center;">
+            <span id="sendms_show" class="payPC_prompt"></span>
         </div>
-    </div>
-</form>
-<script type="text/JavaScript">
-    document.getElementById('login_main').userName.focus();
-</script>
+        <a id="login" class="btn btn-login btn-block">登录</a>
+    </form>
+</div>
+<!-- 全局js -->
+<script src="/static/new/js/jquery.min.js?v=2.1.4" th:src="@{/static/new/js/jquery.min.js?v=2.1.4}"></script>
+<script src="/static/new/layui/layui.js"></script>
+<script src="/static/new/js/bootstrap.min.js?v=3.3.6" th:src="@{/static/new/js/bootstrap.min.js?v=3.3.6}"></script>
 
+<!-- 自定义js -->
+<script src="/static/new/js/content.js?v=1.0.0" th:src="@{/static/new/js/content.js?v=1.0.0}"></script>
+
+<!-- jQuery Validation plugin javascript-->
+<script src="/static/new/js/ajax-util.js"></script>
+<script src="/static/new/js/plugins/validate/jquery.validate.min.js"
+        th:src="@{/static/new/js/plugins/validate/jquery.validate.min.js}"></script>
+<script src="/static/new/js/plugins/validate/messages_zh.min.js" th:src="@{/static/new/js/plugins/validate/messages_zh.min.js}"></script>
+<script src="/static/new/js/plugins/layer/layer.min.js" th:src="@{/static/new/js/plugins/layer/layer.min.js}"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#login").on('click', function () {
+            validateRule();
+            $("#signupForm").submit();
+        });
+    });
+
+    $("body").keydown(function () {
+        if (event.keyCode === 13) { //keyCode=13是回车键
+            $('#login').click();
+        }
+    });
+
+    $.validator.setDefaults({
+        submitHandler: function () {
+            login();
+        }
+    });
+
+    function login() {
+        $.ajax({
+            type: "POST",
+            url: "http://www.dexudichan.com/user/doLogin",
+            data: $('#signupForm').serialize(),
+            success: function (sysResult) {
+                if (sysResult.status === 200) {
+                    var index = layer.load(1, {
+                        shade: [0.1, '#fff'] // 0.1透明度的白色背景
+                    });
+                    parent.location.href = 'http://www.dexudichan.com/index/home';
+                } else {
+                    layer.msg(sysResult.msg);
+                }
+            },
+        });
+    }
+
+    // 验证规则
+    function validateRule() {
+        var icon = "<i class='fa fa-times-circle'></i> ";
+        $("#signupForm").validate({
+            rules: {
+                username: {
+                    required: true
+                },
+                password: {
+                    required: true
+                }
+            },
+            messages: {
+                username: {
+                    required: icon + "请输入您的用户名",
+                },
+                password: {
+                    required: icon + "请输入您的密码",
+                }
+            }
+        })
+    }
+
+</script>
 </body>
 </html>
-
-
