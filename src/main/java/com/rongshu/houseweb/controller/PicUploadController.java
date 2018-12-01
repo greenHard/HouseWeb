@@ -1,20 +1,18 @@
 package com.rongshu.houseweb.controller;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.annotation.Resource;
-import javax.imageio.ImageIO;
-
 import com.rongshu.houseweb.util.OssAliyunUtil;
 import com.rongshu.houseweb.vo.PicUploadResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.annotation.Resource;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 
 @Controller
@@ -58,26 +56,6 @@ public class PicUploadController {
                 result.setHeight(bufImage.getHeight() + "");
                 result.setWidth(bufImage.getWidth() + "");
                 log.info("8>>>>>>上传的图片的宽为:" + bufImage.getWidth() + "高为:" + bufImage.getHeight());
-                //String dir = new SimpleDateFormat("yyyy/MM/dd").format(new Date()) + "/";
-                //绝对路径：C:\jt-upload\images\2016\12\06\
-                // String path = "/var/upload/images/" + dir;
-                //String path = "D:/jt-upload/images/" + dir;
-                // log.info("8>>>>>>要创建文件夹为:" + path);
-
-                //创建目录：
-                //File _dir = new File(path);
-                // 如果目录不存在就创建
-                //if (!_dir.exists()) {
-                //    // 创建多级目录
-                //    _dir.mkdirs();
-                //}
-                // 上传到服务器指定目录下
-                //String urlPrefix = "http://image.jt.com/images/" + dir;
-                //String urlPrefix = "http://www.dexudichan.com:8888/images/" + dir;
-                //String fileName = System.currentTimeMillis() + "" + RandomUtils.nextInt(100, 999) + extFileName;
-                //result.setUrl(urlPrefix + fileName);
-                //log.info("8>>>>>>需要设置的urlPrefix：" + urlPrefix + "文件名称fileName为:" + fileName + ",设置的url：" + result.getUrl());
-
                 // 文件保存到磁盘
                 String upload = ossAliyunUtil.upload(uploadFile);
                 result.setUrl(upload);
