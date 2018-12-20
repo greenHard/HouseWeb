@@ -430,7 +430,7 @@
     function message(){
         var data = $('.info_form').serialize();
         $.ajax({
-            url:'http://www.dexudichan.com/userRequire/collectUserRequire.do',
+            url:'http://118.31.64.18:8080/userRequire/collectUserRequire.do',
             data:data,
             type:'POST',
             dataType:'JSON',
@@ -486,7 +486,7 @@
                 var id = getUrlParmas('id')
                 var _self = this
                 $.ajax({
-                    url:'http://www.dexudichan.com/newHouse/queryById?id='+id,
+                    url:'http://118.31.64.18:8080/newHouse/queryById?id='+id,
                     type:'get',
                     dataType:'json',
                     success:function(response){

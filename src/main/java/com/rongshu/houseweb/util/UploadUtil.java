@@ -22,6 +22,9 @@ public class UploadUtil {
 
     private static final Logger log = LoggerFactory.getLogger(UploadUtil.class);
 
+    /**
+     * 上传地址
+     */
     private static final String uploadPath = "D:/var/uploaded_files/";
 
     private UploadUtil() {

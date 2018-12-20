@@ -1,30 +1,36 @@
 package com.rongshu.houseweb.vo;
 
-import java.util.List;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.List;
 
 /**
  * 自定义响应结构
  */
 public class SysResult {
 
-    // 定义jackson对象
+    /**
+     * 定义jackson对象
+     */
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    // 响应业务状态
     /*
+     * 响应业务状态
      * 200	成功
      * 201	错误
      * 400	参数错误
      */
     private Integer status;
 
-    // 响应消息
+    /**
+     * 响应消息
+     */
     private String msg;
 
-    // 响应中的数据
+    /**
+     * 响应中的数据
+     */
     private Object data;
 
     public static SysResult build(Integer status, String msg, Object data) {

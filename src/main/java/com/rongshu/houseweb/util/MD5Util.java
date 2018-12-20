@@ -18,8 +18,5 @@ public class MD5Util {
 
     public static void main(String[] args) {
         Optional.of(MD5Util.getMd5Hash("admin", "123456")).ifPresent(System.out::println);
-
-
-        Optional.of(MD5Util.getMd5Hash("13917769238", "dexuzhangyazhou")).ifPresent(System.out::println);
     }
 }

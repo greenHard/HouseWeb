@@ -1,18 +1,31 @@
 package com.rongshu.houseweb.vo;
 
-import java.util.List;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.List;
+
+/** 
+ * 响应结果类
+ * @author yuyang.zhang 
+ * @date 2018/12/20 
+ */ 
 public class EasyUIResult {
 
-    // 定义jackson对象
+    /**
+     * 定义jackson对象
+     */
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    private Integer total;	//总记录数
+    /**
+     * 总记录数
+     */
+    private Integer total;
 
-    private List<?> rows;	//存放当页
+    /**
+     * 存放当页
+     */
+    private List<?> rows;
 
     public EasyUIResult() {
     }

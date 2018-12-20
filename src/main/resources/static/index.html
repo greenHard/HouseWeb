@@ -3,9 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>网站首页-上海德旭房地产经纪有限公司</title>
-    <meta name="keywords" content="网站首页-上海德旭房地产经纪有限公司"/>
-    <meta name="description" content="网站首页-上海德旭房地产经纪有限公司"/>
+    <title>网站首页-宁波久辉房地产营销策划有限公司</title>
+    <meta name="keywords" content="网站首页-宁波久辉房地产营销策划有限公司"/>
+    <meta name="description" content="网站首页-宁波久辉房地产营销策划有限公司"/>
     <link rel="stylesheet" href="/static/js/bootstrap.min.css?v=1.0">
     <link rel="stylesheet" href="/static/css/style.css"/>
     <link rel="stylesheet" href="/static/css/css.css"/>
@@ -115,15 +115,15 @@
             <div class="js-left"><img src="/static/uploadpic/2018511395887904099.jpg"></div>
             <div class="js-right">
                 <p>
-                    上海德旭房地产经纪有限公司
+                    宁波久辉房地产营销策划有限公司
                 </p>
                 <p>
                     公司业务范围：
                 </p>
-                ️承接一手房 碧桂园——海上传奇代理、分销，<br/>
-                ️二手房买卖、代办流程，<br/>
-                ️厂房、商铺租赁及买卖，<br/>
-                ️拍卖房购买，️房屋托管业务，<br/>
+                ️①专业承接一手房案场代理，总包销售，渠道分销业务；<br/>
+                ️②二手房交易买卖，代办流程；<br/>
+                ️③拍卖房交易代办，房屋托管运营；<br/>
+                ️经营信条：诚信经营，品质服务，客户第一，不断完善；<br/>
                 您身边的全能专家，24小时在线解答问题！<br/>
                 <br/>
                 <br/>
@@ -144,7 +144,6 @@
                             <img class="img-position-absolute" :src="item.hiLogo"/>
                         </div>
                         <div class="cp_p">{{item.hiName}}</div>
-                        <!--<div class="cp_sp">楼盘位置：{{item.hiAddress}}</div>-->
                         <div class="cp_more">查看楼盘</div>
                     </a>
                 </div>
@@ -183,7 +182,7 @@
 
     <div class="footer">
         <div class="main foot"><a href="#hIndex">网站首页</a>　｜　<a href ="#hIntroduce">公司简介</a>　｜　<a href="#hShow">　房源展示</a>　　｜　<a href="#hContact">联系我们</a><br>
-            版权所有&copy;2018 上海德旭房地产经纪有限公司 <a target="_blank"> 沪ICP备18023790号</a>
+            版权所有&copy;2018 宁波久辉房地产营销策划有限公司 <a target="_blank"> 沪ICP备18023790号</a>
         </div>
     </div>
 
@@ -200,7 +199,7 @@
                 created: function () {
                     var self = this;
                     $.ajax({
-                        url: 'http://www.dexudichan.com/newHouse/findAll',
+                        url: 'http://118.31.64.18:8080/newHouse/findAll',
                         dataType: 'json',
                         data: {
                             pageSize: 50,

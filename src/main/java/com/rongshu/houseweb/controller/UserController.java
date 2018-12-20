@@ -32,33 +32,6 @@ public class UserController {
         return "login";
     }
 
-    //@GetMapping("/login2")
-    //public String login2() {
-    //    return "login2";
-    //}
-    //
-    //@PostMapping("/doLogin")
-    //public String doLogin(String userName, String password, Model model, HttpServletRequest request) {
-    //    if (StringUtils.isBlank(userName) || StringUtils.isBlank(password)) {
-    //        // 输入的数据为空
-    //        model.addAttribute("errorInfo", "用户名或密码不能为空");
-    //        return "login";
-    //    }
-    //
-    //    // 根据用户名和密码查询数据库
-    //    User user = userService.findUserByUserNameAndPassword(userName, MD5Util.getMd5Hash(userName, password));
-    //
-    //    request.getSession().setAttribute("user", user);
-    //
-    //    if (null == user) {
-    //        // 用户名密码错误
-    //        model.addAttribute("errorInfo", "用户名密码错误");
-    //        return "login";
-    //    }
-    //
-    //    return "redirect:/index/home";
-    //}
-
     @PostMapping("/doLogin")
     @ResponseBody
     public SysResult doLogin(String userName, String password, HttpServletRequest request) {
