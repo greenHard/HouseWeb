@@ -11,7 +11,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * @date 2018/12/20 
  */ 
 @SpringBootApplication
-public class HousewebApplication extends SpringBootServletInitializer{
+public class HousewebApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(HousewebApplication.class, args);
